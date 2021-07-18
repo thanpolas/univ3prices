@@ -1,0 +1,15 @@
+extends:
+  - plugin:jest/recommended
+
+plugins:
+  - jest
+
+env:
+  jest/globals: true
+
+rules:
+  no-console: 'off'
+  jsdoc/require-jsdoc: 'off'
+  # Due to extended custom asserters there are many tests without
+  # an expect statement.
+  jest/expect-expect: 0

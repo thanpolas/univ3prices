@@ -1,0 +1,12 @@
+node_modules/
+npm-debug.log
+dump.rdb
+wiki
+temp
+*.iml
+.idea
+coverage
+.DS_Store
+db_data
+junit.xml
+.env

@@ -1,0 +1,47 @@
+root: true
+
+parserOptions:
+  ecmaVersion: 2020
+
+extends:
+  - airbnb-base
+  - plugin:jsdoc/recommended
+  - plugin:security/recommended
+  - plugin:prettier/recommended
+
+plugins:
+  - jsdoc
+  - security
+
+rules:
+  arrow-body-style: 0
+  camelcase: 0
+  class-methods-use-this: 0
+  consistent-return: 0
+  curly: ["error", "all"]
+  func-names: 0
+  function-paren-newline: 0
+  global-require: 0
+  implicit-arrow-linebreak: "off"
+  jsdoc/check-examples: "off"
+  jsdoc/check-tag-names: "error"
+  jsdoc/no-undefined-types: "off"
+  jsdoc/require-returns-description: "off"
+  no-multi-assign: 0
+  no-param-reassign: 0
+  no-restricted-syntax: ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
+  no-underscore-dangle: 0
+  prefer-arrow-callback: 0
+  security/detect-object-injection: 0
+
+settings:
+  jsdoc:
+    preferredTypes:
+      object: Object
+      express: Express
+      Function: function
+      knex: Knex
+    tagNamePreference:
+      constant: const
+      file: fileoverview
+      returns: return
