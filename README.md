@@ -39,10 +39,6 @@ console.log(prices);
 
 The `univ3prices()` returns an object that contains three functions depending on the output type you wish to have:
 
--   [`toSignificant()` To get the defined last significant decimals][significant].
--   [`toFixed()` To get a fixed number of decimals][fixed].
--   [`toScalar` To get the raw Big Int values of the token pair.][scalar].
-
 ### toSignificant(digits, optFormat, optRounding)
 
 > Returns string the "digits" last significant decimals.
