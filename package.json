@@ -1,10 +1,10 @@
 {
-    "name": "@thanpolas/univ3-prices",
+    "name": "@thanpolas/univ3prices",
     "version": "0.1.0",
     "main": "./app/",
     "description": "Library to calculate Uniswap V3 ratios (prices) from token pairs",
-    "homepage": "https://github.com/thanpolas/univ3-prices",
-    "bugs": "https://github.com/thanpolas/univ3-prices/issues",
+    "homepage": "https://github.com/thanpolas/univ3prices",
+    "bugs": "https://github.com/thanpolas/univ3prices/issues",
     "author": {
         "name": "Thanos Polychronakis",
         "email": "thanpolas@gmail.com"
@@ -14,7 +14,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/thanpolas/univ3-prices"
+        "url": "https://github.com/thanpolas/univ3prices"
     },
     "license": "ISC",
     "engines": {
