@@ -25,7 +25,8 @@
         "release": "release-it --ci",
         "release:minor": "release-it minor --ci",
         "release:major": "release-it major --ci",
-        "eslint": "eslint src test"
+        "eslint": "eslint src test",
+        "jest": "jest"
     },
     "jest": {
         "coverageReporters": [
