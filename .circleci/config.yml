@@ -1,33 +1,59 @@
 version: 2.1
 
+workflows:
+  version: 2
+  build-app:
+    jobs:
+      - build:
+          node_version: 10
+          filters:
+            branches:
+              only: /.*/
+      - build:
+          node_version: 12
+          filters:
+            branches:
+              only: /.*/
+      - build:
+          node_version: 14
+          filters:
+            branches:
+              only: /.*/
+      - test_app:
+          requires:
+            - build
+          filters:
+            branches:
+              only: /.*/
+      - eslint:
+          requires:
+            - build
+          filters:
+            branches:
+              only: /.*/
+
 jobs:
   build:
     docker:
-      - image: circleci/node:14.15.5
-
+      - image: circleci/node:<< parameters.node_version >>
     working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
           keys:
-            - deps-{{ checksum "package.json" }}
-
+            - deps-{{ checksum "package-lock.json" }}
       - run:
           name: Install dependencies
           command: npm ci
-
       - save_cache:
           paths:
             - node_modules
-          key: deps-{{ checksum "package.json" }}
+          key: deps-{{ checksum "package-lock.json" }}
 
   eslint:
     docker:
       - image: circleci/node:14.15.5
-
     working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
@@ -37,7 +63,6 @@ jobs:
       - run:
           name: eslint
           command: npm run eslint
-
   test_app:
     docker:
       - image: circleci/node:14.15.5
@@ -54,25 +79,3 @@ jobs:
           name: JEST
           command: npm run jest
 
-workflows:
-  version: 2
-  build-app:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: /.*/
-
-      - eslint:
-          requires:
-            - build
-          filters:
-            branches:
-              only: /.*/
-
-      - test_app:
-          requires:
-            - build
-          filters:
-            branches:
-              only: /.*/
