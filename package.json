@@ -1,7 +1,7 @@
 {
     "name": "@thanpolas/univ3prices",
     "version": "0.1.0",
-    "main": "./app/",
+    "main": "./src/",
     "description": "Library to calculate Uniswap V3 ratios (prices) from token pairs",
     "homepage": "https://github.com/thanpolas/univ3prices",
     "bugs": "https://github.com/thanpolas/univ3prices/issues",
@@ -21,11 +21,11 @@
         "node": ">=12"
     },
     "scripts": {
-        "test": "eslint app test && jest",
+        "test": "eslint src test && jest",
         "release": "release-it --ci",
         "release:minor": "release-it minor --ci",
         "release:major": "release-it major --ci",
-        "eslint": "eslint app test"
+        "eslint": "eslint src test"
     },
     "jest": {
         "coverageReporters": [
