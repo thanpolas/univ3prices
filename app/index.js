@@ -14,8 +14,10 @@
 
 const { getPrice } = require('./univ3-price');
 const { encodeSqrtRatioX96, sqrt } = require('./utils');
+const { Rounding } = require('./rounding');
 
 const api = (module.exports = getPrice);
 
 api.encodeSqrtRatioX96 = encodeSqrtRatioX96;
 api.sqrt = sqrt;
+api.Rounding = Rounding;
