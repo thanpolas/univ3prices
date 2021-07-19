@@ -12,13 +12,13 @@ describe('Uniswap V3 Prices', () => {
       expect(price).toBeString();
       expect(price).toEqual('1.01');
     });
-  });
-  it('Price of token1 to token0', () => {
-    const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
+    it('Price of token1 to token0', () => {
+      const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-    const price = univ3Price(6, 18, sqrtRatioX96, true).toSignificant(5);
+      const price = univ3Price(6, 18, sqrtRatioX96, true).toSignificant(5);
 
-    expect(price).toBeString();
-    expect(price).toEqual('0.9901');
+      expect(price).toBeString();
+      expect(price).toEqual('0.9901');
+    });
   });
 });
