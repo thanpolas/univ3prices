@@ -35,35 +35,24 @@ jobs:
             - deps-{{ checksum "package.json" }}
 
       - run:
-          name: ESLint App
+          name: eslint
           command: npm run eslint
 
   test_app:
     docker:
       - image: circleci/node:14.15.5
-      - image: circleci/postgres:11.9-ram
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_HOST_AUTH_METHOD: trust
-
     working_directory: ~/repo
 
     steps:
       - checkout
-
       - restore_cache:
           keys:
             - deps-{{ checksum "package.json" }}
-
-      - run:
-          name: Test App
-          command: NUKE_TEST_DB=1 npm run test:app -- --ci --reporters=jest-junit
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: "artifacts/jest"
-            JEST_JUNIT_OUTPUT_NAME: "results-app.xml"
-
       - store_test_results:
           path: artifacts
+      - run:
+          name: JEST
+          command: npm run jest
 
 workflows:
   version: 2
