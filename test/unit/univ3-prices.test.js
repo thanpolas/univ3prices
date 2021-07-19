@@ -1,3 +1,4 @@
+const JSBI = require('jsbi');
 const univ3Price = require('../..');
 
 const { encodeSqrtRatioX96, Rounding } = univ3Price;
@@ -59,13 +60,29 @@ describe('Uniswap V3 Prices', () => {
       });
     });
     describe('Rounding', () => {
-      it('Will round UP (default)', () => {
+      it('Will round UP to 5 digits (default)', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
 
-        const price = univ3Price(18, 18, sqrtRatioX96).toSignificant(5);
+        const price = univ3Price(18, 18, sqrtRatioX96).toSignificant();
 
         expect(price).toBeString();
         expect(price).toEqual('1.4286');
+      });
+      it('Will Round UP to 3 digits', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = univ3Price(18, 18, sqrtRatioX96).toSignificant(3);
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.43');
+      });
+      it('Will Round UP to 2 digits', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = univ3Price(18, 18, sqrtRatioX96).toSignificant(2);
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.4');
       });
       it('Will round DOWN', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
@@ -78,6 +95,18 @@ describe('Uniswap V3 Prices', () => {
 
         expect(price).toBeString();
         expect(price).toEqual('1.4285');
+      });
+      it('Will round DOWN 3 digits', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = univ3Price(18, 18, sqrtRatioX96).toSignificant(
+          3,
+          { groupSeparator: '' },
+          Rounding.ROUND_DOWN,
+        );
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.42');
       });
       it('Will round HALF_UP', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
@@ -149,13 +178,29 @@ describe('Uniswap V3 Prices', () => {
       });
     });
     describe('Rounding', () => {
-      it('Will round UP (default)', () => {
+      it('Will Round UP (default)', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
 
-        const price = univ3Price(18, 18, sqrtRatioX96).toFixed(5);
+        const price = univ3Price(18, 18, sqrtRatioX96).toFixed();
 
         expect(price).toBeString();
         expect(price).toEqual('1.42857');
+      });
+      it('Will Round UP 3 digits', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = univ3Price(18, 18, sqrtRatioX96).toFixed(3);
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.429');
+      });
+      it('Will Round UP 2 digits', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = univ3Price(18, 18, sqrtRatioX96).toFixed(2);
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.43');
       });
       it('Will round DOWN', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
@@ -181,6 +226,18 @@ describe('Uniswap V3 Prices', () => {
         expect(price).toBeString();
         expect(price).toEqual('1.42857');
       });
+    });
+  });
+  describe('toScalar', () => {
+    it('Validations and type checks', () => {
+      const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
+
+      const scalar = univ3Price(6, 18, sqrtRatioX96).toScalar();
+
+      expect(scalar).toBeObject();
+      expect(scalar).toContainAllKeys(['numerator', 'denominator']);
+      expect(scalar.numerator).toBeInstanceOf(JSBI);
+      expect(scalar.denominator).toBeInstanceOf(JSBI);
     });
   });
 });
