@@ -2,7 +2,7 @@
  * @fileoverview Functional context for chaining commands.
  */
 
-const { toFixed, toSignificant } = require('./big_formatting');
+const { toFixed, toSignificant } = require('./formatting');
 
 /**
  * Functional context for chaining commands.

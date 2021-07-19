@@ -12,7 +12,7 @@
  * @fileoverview Public API
  */
 
-const { getPrice, Q96, Q192 } = require('./univ3-price');
+const { getPrice, Q96, Q192 } = require('./univ3prices');
 const { encodeSqrtRatioX96, sqrt } = require('./utils');
 const { Rounding } = require('./rounding');
 
