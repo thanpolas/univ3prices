@@ -9,7 +9,7 @@
  */
 
 /**
- * @fileOverview Public API
+ * @fileoverview Public API
  */
 
 const { getPrice } = require('./univ3-price');
