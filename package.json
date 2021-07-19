@@ -1,10 +1,10 @@
 {
-    "name": "@thanpolas/awesome",
-    "version": "0.0.0",
-    "main": "./app/",
-    "description": "Awesome Lib",
-    "homepage": "https://github.com/thanpolas/awesome",
-    "bugs": "https://github.com/thanpolas/awesome/issues",
+    "name": "@thanpolas/univ3prices",
+    "version": "0.1.0",
+    "main": "./src/",
+    "description": "Library to calculate Uniswap V3 ratios (prices) from token pairs",
+    "homepage": "https://github.com/thanpolas/univ3prices",
+    "bugs": "https://github.com/thanpolas/univ3prices/issues",
     "author": {
         "name": "Thanos Polychronakis",
         "email": "thanpolas@gmail.com"
@@ -14,14 +14,19 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/thanpolas/awesome"
+        "url": "https://github.com/thanpolas/univ3prices"
     },
     "license": "ISC",
     "engines": {
-        "node": "14.15.5"
+        "node": ">=12"
     },
     "scripts": {
-        "test": "eslint app/**"
+        "test": "eslint src test && jest",
+        "release": "release-it --ci",
+        "release:minor": "release-it minor --ci",
+        "release:major": "release-it major --ci",
+        "eslint": "eslint src test",
+        "jest": "jest"
     },
     "jest": {
         "coverageReporters": [
@@ -39,21 +44,28 @@
         "globalSetup": "./test/lib/global-setup.test.js",
         "testTimeout": 10000
     },
-    "dependencies": {},
+    "dependencies": {
+        "big.js": "^6.1.1",
+        "decimal.js": "^10.3.1",
+        "invariant": "^2.2.4",
+        "jsbi": "^3.1.5",
+        "toformat": "^2.0.0"
+    },
     "devDependencies": {
-        "@types/jest": "26.0.24",
-        "eslint": "7.31.0",
-        "eslint-config-airbnb-base": "14.2.1",
-        "eslint-config-prettier": "8.3.0",
-        "eslint-plugin-import": "2.23.4",
-        "eslint-plugin-jest": "24.3.6",
-        "eslint-plugin-jsdoc": "35.4.5",
-        "eslint-plugin-prettier": "3.4.0",
-        "eslint-plugin-security": "1.4.0",
-        "expect": "27.0.6",
-        "jest": "27.0.6",
-        "jest-extended": "0.11.5",
-        "jest-junit": "12.2.0",
-        "prettier": "2.3.2"
+        "@types/jest": "^26.0.24",
+        "eslint": "^7.31.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-jest": "^24.3.6",
+        "eslint-plugin-jsdoc": "^35.4.5",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-security": "^1.4.0",
+        "expect": "^27.0.6",
+        "jest": "^27.0.6",
+        "jest-extended": "^0.11.5",
+        "jest-junit": "^12.2.0",
+        "prettier": "^2.3.2",
+        "release-it": "^14.10.0"
     }
 }
