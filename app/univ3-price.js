@@ -31,18 +31,18 @@ entity.getPrice = (
 
   const origValue = JSBI.multiply(sqrtRatioX96BI, sqrtRatioX96BI);
 
-  let token0Multi = Q192;
-  let token1Multi = origValue;
+  const token0 = JSBI.BigInt(JSBI.multiply(Q192, token0decs));
+  const token1 = JSBI.BigInt(JSBI.multiply(origValue, token1decs));
+
+  let numerator = token1;
+  let denominator = token0;
 
   if (optReverse) {
-    token0Multi = origValue;
-    token1Multi = Q192;
+    numerator = token0;
+    denominator = token1;
   }
 
-  const fraction = {
-    numerator: JSBI.BigInt(JSBI.multiply(token1Multi, token1decs)),
-    denominator: JSBI.BigInt(JSBI.multiply(token0Multi, token0decs)),
-  };
+  const fraction = { numerator, denominator };
 
   const chainCtx = chainContext(fraction);
 
