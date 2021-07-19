@@ -23,14 +23,14 @@ const formatting = (module.exports = {});
  *
  * @param {Object<bigint>} fraction Fraction object containing the numerator
  *    and denominator.
- * @param {number} significantDigits How many significant digits to use.
+ * @param {number=} significantDigits How many significant digits to use.
  * @param {Object=} format Formatting of the output.
  * @param {Rounding} rounding Desired rounding.
  * @return {string} The result.
  */
 formatting.toSignificant = (
   fraction,
-  significantDigits,
+  significantDigits = 5,
   format = { groupSeparator: '' },
   rounding = Rounding.ROUND_HALF_UP,
 ) => {
@@ -59,14 +59,14 @@ formatting.toSignificant = (
  *
  * @param {Object<bigint>} fraction Fraction object containing the numerator
  *    and denominator.
- * @param {number} decimalPlaces How many decimal places to use.
+ * @param {number=} decimalPlaces How many decimal places to use.
  * @param {Object=} format Formatting of the output.
  * @param {Rounding} rounding Desired rounding.
  * @return {string} The result.
  */
 formatting.toFixed = (
   fraction,
-  decimalPlaces,
+  decimalPlaces = 5,
   format = { groupSeparator: '' },
   rounding = Rounding.ROUND_HALF_UP,
 ) => {
