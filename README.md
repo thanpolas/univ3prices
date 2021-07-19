@@ -225,9 +225,9 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [univ3graph]: https://thegraph.com/legacy-explorer/subgraph/uniswap/uniswap-v3
 [slot0]: https://github.com/Uniswap/uniswap-v3-core/blob/b2c5555d696428c40c4b236069b3528b2317f3c1/contracts/interfaces/pool/IUniswapV3PoolState.sol#L21-L32
 [toformat]: https://github.com/MikeMcl/toFormat#further-examples
-[tosignificant]: #tosignificant_digits_optFormat_optRounding
+[tosignificant]: #tosignificantdigits-optformat-optrounding
 [jsbi]: https://github.com/GoogleChromeLabs/jsbi#readme
-[rounding]: #rounding_values
+[rounding]: #rounding-values
 [uni-pool]: https://github1s.com/Uniswap/uniswap-v3-sdk/blob/aeb1b09/src/entities/pool.ts#L96-L122
 [uni-price]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/price.ts
 [uni-fraction]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/fraction.ts
