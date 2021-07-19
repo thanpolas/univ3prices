@@ -2,6 +2,9 @@
 
 > A Node.js library to calculate [Uniswap V3][univ3] ratios (prices) from token pairs.
 
+[![NPM Version][npm-image]][npm-url]
+[![CircleCI][circle-image]][circle-url]
+
 ## Install
 
 Install the module using NPM:
@@ -232,3 +235,7 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [uni-pool]: https://github1s.com/Uniswap/uniswap-v3-sdk/blob/aeb1b09/src/entities/pool.ts#L96-L122
 [uni-price]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/price.ts
 [uni-fraction]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/fraction.ts
+[npm-image]: https://img.shields.io/npm/v/@thanpolas/univ3prices.svg
+[npm-url]: https://npmjs.org/package/@thanpolas/univ3prices
+[circle-url]: https://circleci.com/gh/thanpolas/univ3prices/tree/main
+[circle-image]: https://circleci.com/gh/thanpolas/univ3prices/tree/main.svg?style=svg
