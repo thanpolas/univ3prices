@@ -67,7 +67,7 @@ formatting.toSignificant = (
 formatting.toFixed = (
   fraction,
   decimalPlaces,
-  format = { groupSeparator: ',' },
+  format = { groupSeparator: '' },
   rounding = Rounding.ROUND_HALF_UP,
 ) => {
   invariant(
