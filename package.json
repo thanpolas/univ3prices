@@ -21,7 +21,11 @@
         "node": ">=12"
     },
     "scripts": {
-        "test": "eslint app/**"
+        "test": "eslint app test && jest",
+        "release": "release-it --ci",
+        "release:minor": "release-it minor --ci",
+        "release:major": "release-it major --ci",
+        "eslint": "eslint app test"
     },
     "jest": {
         "coverageReporters": [
