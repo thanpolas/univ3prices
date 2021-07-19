@@ -176,6 +176,25 @@ The univ3prices package offers a few utility functions and constants:
 -   `univ3prices.Q96` Q96 number constant.
 -   `univ3prices.Q192` Q192 number constant.
 
+# Acknowledgements & Credits
+
+This library has been a study and break down, to understand how Uniswap V3 works. It acts both as a library for you to use and a way for you to understand, in simpler terms, how price is calculated.
+
+In particular, the [Uniswap V3 SDK's Pool Class][uni-pool] and the [Uniswap SDK Core's Price][uni-price] and [Fraction][uni-fraction] classes were reverse engineered and rewritten in a functional manner. Most of the tests where also ported directly from the excellently tested SDK and Core packages.
+
+I want to thank "Jorropo.eth" who has accompanied and helped me in the weeks long journey of discovering how to calculate Uniswap's V3 Liquidity Pool ratios, on Uniswap's Discord. He also gave the following excellent explanation as to why the Token Pair reserves are square rooted:
+
+> This is so the difference gets exponentially written.
+>
+> Let's assume ticks were just 100$ in size, so you have one from 0-100, 100-200, ...
+> A token that is price at 250$ would need to do +20% in price to cross a tick.
+> But a token priced 25050$ it's bearly +0.2%.
+>
+> Having them SQRT makes the ratio constant.
+> So in any cases it's just let's say any 1% of price change, cross a tick.
+>
+> This spreads them each 1% appart (so fewer and fewer ticks), instead of each 100$ appart.
+
 # Maintenance & Development
 
 ## Update Node Version
@@ -185,7 +204,6 @@ When a new node version should be supported, updated the following:
 -   `/package.json`
 -   `/.nvmrc`
 -   `/.circleci/config.yml`
--   `/Dockerfile`
 
 ## Releasing
 
@@ -211,3 +229,6 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [tosignificant]: #tosignificant_digits_optFormat_optRounding
 [jsbi]: https://github.com/GoogleChromeLabs/jsbi#readme
 [rounding]: #rounding_values
+[uni-pool]: https://github1s.com/Uniswap/uniswap-v3-sdk/blob/aeb1b09/src/entities/pool.ts#L96-L122
+[uni-price]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/price.ts
+[uni-fraction]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/fraction.ts
