@@ -6,11 +6,11 @@ const JSBI = require('jsbi');
 
 const chainContext = require('./chain-context');
 
-// Constants required in ratio calculations.
-const Q96 = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(96));
-const Q192 = JSBI.exponentiate(Q96, JSBI.BigInt(2));
-
 const entity = (module.exports = {});
+
+// Constants required in ratio calculations.
+entity.Q96 = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(96));
+entity.Q192 = JSBI.exponentiate(entity.Q96, JSBI.BigInt(2));
 
 entity.getPrice = (
   token0Decimals,
@@ -31,7 +31,7 @@ entity.getPrice = (
 
   const origValue = JSBI.multiply(sqrtRatioX96BI, sqrtRatioX96BI);
 
-  const token0 = JSBI.BigInt(JSBI.multiply(Q192, token0decs));
+  const token0 = JSBI.BigInt(JSBI.multiply(entity.Q192, token0decs));
   const token1 = JSBI.BigInt(JSBI.multiply(origValue, token1decs));
 
   let numerator = token1;
