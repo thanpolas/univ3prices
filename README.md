@@ -30,7 +30,7 @@ console.log(prices);
 
 ## univ3prices(decimals0, decimals1, sqrtRatioX96, optReverse)
 
-> The default function exposed is used to calculate [Uniswap V3][univ3] Liquidity Pool (LP) Token Pairs.
+> The default function exposed, calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs.
 
 -   `decimals0` **{number}** The decimals of token 0.
 -   `decimals1` **{number}** The decimals of token 1.
@@ -41,7 +41,7 @@ The `univ3prices()` returns an object that contains three functions depending on
 
 ### toSignificant(digits, optFormat, optRounding)
 
-> Returns string the "digits" last significant decimals.
+> Returns **string**, the last significant decimals as defined by "digits".
 
 -   `digits` **{number=}** How many significant digits to return, default `5`.
 -   `optFormat` **{Object=}** Formatting instructions for the [toFormat][toformat] library, default is no formatting.
@@ -76,7 +76,7 @@ univ3Price(18, 18, sqrtRatioX96).toSignificant(2);
 // prepare a sqrtRatioX96 value, by emulating a 10 / 7 division.
 const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
 // and a sqrtRatioX96 value emulating 20000000 / 1 division.
-const sqrtRatioX96_20m = encodeSqrtRatioX96(10e18, 7e18);
+const sqrtRatioX96_20m = encodeSqrtRatioX96(20000000e18, 1e18);
 
 // Default Formatting
 const formatDef = { groupSeparator: '' };
@@ -95,7 +95,7 @@ univ3Price(18, 18, sqrtRatioX96_20m).toSignificant(5, formatComma);
 
 ### toFixed(digits, optFormat, optRounding)
 
-> Returns string, fixed decimals as defined in digits.
+> Returns **string**, fixed decimals as defined in "digits".
 
 -   `digits` **{number=}** How many significant digits to return, default `5`.
 -   `optFormat` **{Object=}** Formatting instructions for the [toFormat][toformat] library, default is no formatting.
@@ -128,7 +128,7 @@ univ3Price(18, 18, sqrtRatioX96_20m).toFixed(2);
 
 ### toScalar()
 
-> Returns the raw scalar containing numerator and denominator in [BigInt type][jsbi] of the token pairs.
+> Returns the raw scalar object, contains the numerator and denominator in [BigInt type][jsbi] of the token pairs.
 
 #### toScalar Examples
 
