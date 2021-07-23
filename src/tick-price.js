@@ -20,8 +20,8 @@ entity.tick = (token0Decimals, token1Decimals, tick, optReverse = false) => {
   const numerator = 1.0001 ** absTick;
 
   const fraction = {
-    numerator: ratioNumerator,
-    denominator: tokendecs,
+    numerator: optReverse ? denominator : numerator,
+    denominator: optReverse ? numerator : denominator,
   };
 
   const chainCtx = chainContext(fraction);
