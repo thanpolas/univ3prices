@@ -1,5 +1,5 @@
 /**
- * @fileoverview Calculates the price (ratio) of a Uniswap V3 Liquidity Pool.
+ * @fileoverview Calculates the price (ratio) from sqrt ratio.
  */
 
 const JSBI = require('jsbi');
@@ -12,6 +12,15 @@ const entity = (module.exports = {});
 entity.Q96 = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(96));
 entity.Q192 = JSBI.exponentiate(entity.Q96, JSBI.BigInt(2));
 
+/**
+ * Calculates the price (ratio) from sqrt ratio.
+ *
+ * @param {string} token0Decimals Decimals of token 0.
+ * @param {string} token1Decimals Decimals of token 1.
+ * @param {string} sqrtRatioX96 The tick value.
+ * @param {boolean=} optReverse Set to true to reverse the token pair.
+ * @return {Object} The chain context.
+ */
 entity.getPrice = (
   token0Decimals,
   token1Decimals,
