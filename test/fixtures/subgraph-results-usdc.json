@@ -1,0 +1,522 @@
+{
+    "data": {
+        "tokens": [
+            {
+                "id": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                "symbol": "USDC",
+                "whitelistPools": [
+                    {
+                        "feeTier": "3000",
+                        "id": "0x07a6e955ba4345bae83ac2a6faa771fddd8a2011",
+                        "liquidity": "29224615949307564",
+                        "sqrtPrice": "75498544743804075909440",
+                        "tick": "-277289",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MATIC"
+                        },
+                        "token0Price": "1.101240072559407875693737390502294",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "0.9080672097918536796427071573530997"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x0d47fedc9f84ceb8c95719bb6b684b50645cf2f0",
+                        "liquidity": "52574199596126531",
+                        "sqrtPrice": "113907862380360149557570",
+                        "tick": "-269063",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "1INCH"
+                        },
+                        "token0Price": "0.4837842926695982064686273954493714",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "2.067036931856224421864151272428942"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x0f9d9d1cce530c91f075455efef2d9386375df3d",
+                        "liquidity": "0",
+                        "sqrtPrice": "4690662448362843515773254",
+                        "tick": "-194700",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MKR"
+                        },
+                        "token0Price": "0.0002852927958872706577713119613819106",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "3505.170878535382321874143033379666"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x138080a0036e8c2c4c79d21e2a2c535fe0887d68",
+                        "liquidity": "0",
+                        "sqrtPrice": "79118880664016687274144",
+                        "tick": "-276352",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "FEI"
+                        },
+                        "token0Price": "1.002764379914009597522631829171839",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "0.9972432408157072229127022379389942"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x3d61c8c42d6cda9cefbebe6e322597ddc37692ff",
+                        "liquidity": "1012064708853",
+                        "sqrtPrice": "1178083410613295723750093810",
+                        "tick": "-84174",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "cUSDC"
+                        },
+                        "token0Price": "45.22796908124829633641737202831159",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "0.022110212337935911203668498308608"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x5180545835bd68810fb7e11c7160bb7ea4ae8744",
+                        "liquidity": "108463312772179617041",
+                        "sqrtPrice": "79406603925318925533115",
+                        "tick": "-276280",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "FEI"
+                        },
+                        "token0Price": "0.9955106777844536542817306607598485",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.004509567115379918035154172049224"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x62773f00cd3e0df3d70beca5aee342b0151fe78a",
+                        "liquidity": "9188076535155769",
+                        "sqrtPrice": "141322006443727466613301",
+                        "tick": "-264750",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "1INCH"
+                        },
+                        "token0Price": "0.3142965240117324548952255780892781",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "3.181708748273241308965731874995327"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x6958686b6348c3d6d5f2dca3106a5c09c156873a",
+                        "liquidity": "24405430160684491",
+                        "sqrtPrice": "79224306452235117009926",
+                        "tick": "-276325",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "DAI"
+                        },
+                        "token0Price": "1.000097347797523468560923036695158",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "0.9999026616781477783833621614227994"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x6a9850e46518231b23e50467c975fa94026be5d5",
+                        "liquidity": "8111796489156420973",
+                        "sqrtPrice": "79584309782502206233778",
+                        "tick": "-276235",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "sUSD"
+                        },
+                        "token0Price": "0.9910698384403888072303619883621213",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.009010627922714577745385027425698"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x6c6bc977e13df9b0de53b251522280bb72383700",
+                        "liquidity": "166792036872442436993090",
+                        "sqrtPrice": "79253935708029670297225",
+                        "tick": "-276318",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "DAI"
+                        },
+                        "token0Price": "0.999349710450488626428699504549795",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.000650712701180685688442236666162"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x7858e59e0c01ea06df3af3d20ac7b0003275d4bf",
+                        "liquidity": "177233808643307178",
+                        "sqrtPrice": "79235584412270062749462650596",
+                        "tick": "1",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "0.9998126712774108946379273454012231",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDT"
+                        },
+                        "token1Price": "1.000187363821214392867808322867874"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x7bea39867e4169dbe237d55c8242a8f2fcdcc387",
+                        "liquidity": "694325009468388317",
+                        "sqrtPrice": "1744073440179585841956005180083008",
+                        "tick": "199998",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "2063.619535926946044454438480147317",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004845854492993135164190159156244755"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+                        "liquidity": "12921122434772292244",
+                        "sqrtPrice": "1748594425852152121327225492890839",
+                        "tick": "200049",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "2052.962366490044487079454422417781",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004871009894398126757838834402404821"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+                        "liquidity": "18699981595588671923",
+                        "sqrtPrice": "1748276423625898597568100955767789",
+                        "tick": "200046",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "2053.70928038627481635594980904468",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004869238355936696087903544823057157"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x8c54aa2a32a779e6f6fbea568ad85a19e0109c26",
+                        "liquidity": "1206782162755128408928",
+                        "sqrtPrice": "79316476058187868020125",
+                        "tick": "-276302",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "FEI"
+                        },
+                        "token0Price": "0.9977743746892427278066760877951138",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.002230589767802409422419300688555"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x936198fcac6d8cdec3815f24ba250041f593f6c3",
+                        "liquidity": "0",
+                        "sqrtPrice": "4221598273189988297553953",
+                        "tick": "-196808",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MKR"
+                        },
+                        "token0Price": "0.0003522129829066551777375548406664085",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "2839.191195473404220055579576206833"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x99ac8ca7087fa4a2a1fb6357269965a2014abc35",
+                        "liquidity": "9481547071842",
+                        "sqrtPrice": "1425886165973992478102612215897",
+                        "tick": "57807",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "WBTC"
+                        },
+                        "token0Price": "0.00003087375521606903016722894933528395",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "32389.96983041196743308616242501582"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x9a772018fbd77fcd2d25657e5c547baff3fd7d16",
+                        "liquidity": "22661273396",
+                        "sqrtPrice": "1425146623636913547886496749923",
+                        "tick": "57796",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "WBTC"
+                        },
+                        "token0Price": "0.00003090580577543942901235834327877981",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "32356.38013342758955568686494800004"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x9da1d1c9353b32c9e15adf11fadbe9f0860fccfa",
+                        "liquidity": "0",
+                        "sqrtPrice": "93290392772158055696948",
+                        "tick": "-273057",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MATIC"
+                        },
+                        "token0Price": "0.7212491666733562604564108967213436",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.386483404358491444905590875295175"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x9febc984504356225405e26833608b17719c82ae",
+                        "liquidity": "6050793998180847861",
+                        "sqrtPrice": "113606597241233334161559",
+                        "tick": "-269116",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "1INCH"
+                        },
+                        "token0Price": "0.486353520059792553910459024286666",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "2.056117533347058907975223351155965"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xa63b490aa077f541c9d64bfc1cc0db2a752157b5",
+                        "liquidity": "1983087073471302739",
+                        "sqrtPrice": "79233311814628762901193",
+                        "tick": "-276323",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "DAI"
+                        },
+                        "token0Price": "0.9998700260553966661662263711112122",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.000129990840025574258592751148749"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xbb256c2f1b677e27118b0345fd2b3894d2e6d487",
+                        "liquidity": "1577017247372",
+                        "sqrtPrice": "79606493801493891893104572269",
+                        "tick": "95",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "0.9905175506143449566383871338724796",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDT"
+                        },
+                        "token1Price": "1.009573227026390173116262058579669"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xc486ad2764d55c7dc033487d634195d6e4a6917e",
+                        "liquidity": "0",
+                        "sqrtPrice": "4840980302227415461308381",
+                        "tick": "-194070",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MKR"
+                        },
+                        "token0Price": "0.0002678505462805168981384668888300317",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "3733.425277216762223077223089786756"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xcbfb0745b8489973bf7b334d54fdbd573df7ef3c",
+                        "liquidity": "2885704",
+                        "sqrtPrice": "1448643306988198679173366307741",
+                        "tick": "58123",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "WBTC"
+                        },
+                        "token0Price": "0.00002991136545347691127988721524555589",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "33432.1079910365485041926602419223"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xd24b1542323096ccbf9cba3b13c5b9eb4a92c506",
+                        "liquidity": "2447681761010871",
+                        "sqrtPrice": "318772049679000201041739",
+                        "tick": "-248480",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "LINK"
+                        },
+                        "token0Price": "0.06177300061351353272736637908460234",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "16.18830217195631660474612072861428"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xdceaf5d0e5e0db9596a47c0c4120654e80b1d706",
+                        "liquidity": "1290215480752957",
+                        "sqrtPrice": "1321603404621341544342874",
+                        "tick": "-220036",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "AAVE"
+                        },
+                        "token0Price": "0.003593824540362024631406830126174612",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "278.2550980909226026589941376653182"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0xe55e68925809784c8234dfcf6f8fa42c3a48b2c3",
+                        "liquidity": "13397840896594909972",
+                        "sqrtPrice": "79281324969024789823047",
+                        "tick": "-276311",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "TUSD"
+                        },
+                        "token0Price": "0.9986593405037637111902375152352403",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "1.001342459277014328571995314724633"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xee4cf3b78a74affa38c6a926282bcd8b5952818d",
+                        "liquidity": "1625215677249",
+                        "sqrtPrice": "79248155462308520354175685931",
+                        "tick": "5",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "0.9994954980090345522569301874602212",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDT"
+                        },
+                        "token1Price": "1.000504756641696136477058325087128"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xf15054bc50c39ad15fdc67f2aedd7c2c945ca5f6",
+                        "liquidity": "457624534132",
+                        "sqrtPrice": "4160931537744578017031555733711757",
+                        "tick": "217389",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "362.5584463960674691040624746517192",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "COMP"
+                        },
+                        "token1Price": "0.002758175984976436649573398968736293"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xfad57d2039c21811c8f2b5d5b65308aa99d31559",
+                        "liquidity": "59958101946762453",
+                        "sqrtPrice": "316267722195844988729043",
+                        "tick": "-248638",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "LINK"
+                        },
+                        "token0Price": "0.06275515780578083965959066706320227",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token1Price": "15.9349451896029275361736063511094"
+                    }
+                ]
+            }
+        ]
+    }
+}

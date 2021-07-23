@@ -1,0 +1,692 @@
+{
+    "data": {
+        "tokens": [
+            {
+                "id": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+                "symbol": "WETH",
+                "whitelistPools": [
+                    {
+                        "feeTier": "3000",
+                        "id": "0x04916039b1f59d9745bf6e0a21f191d1e0a84287",
+                        "liquidity": "1250415901894924126195",
+                        "sqrtPrice": "296889995743092025836900236514",
+                        "tick": "26421",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "YFI"
+                        },
+                        "token0Price": "0.07121443622488978467800120688551749",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "14.04209670132156767220794420047932"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x11b815efb8f581194ae79006d24e0d814b7697f6",
+                        "liquidity": "2307998591984700596",
+                        "sqrtPrice": "3592674710566826044870471",
+                        "tick": "-200034",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token0Price": "0.0004863213922165207483341783867468341",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDT"
+                        },
+                        "token1Price": "2056.253366610651752487145424578153"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x1353fe67fff8f376762b7034dc9066f0be15a723",
+                        "liquidity": "43289793171543796537",
+                        "sqrtPrice": "29394088707913377389679100916",
+                        "tick": "-19832",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "AAVE"
+                        },
+                        "token0Price": "7.265059349953994354888942348575479",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.1376451246755929740280914036585451"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x2028d7ef0223c45cadbf05e13f1823c1228012bf",
+                        "liquidity": "3758680823172630471711",
+                        "sqrtPrice": "1743761038467906823744000460",
+                        "tick": "-76330",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "FEI"
+                        },
+                        "token0Price": "2064.359013423450158994515187361079",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004844118651346599462299528796536559"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x290a6a7460b308ee3f19023d2d00de604bcf5b42",
+                        "liquidity": "336079261539211773406934",
+                        "sqrtPrice": "1668871512271356784591875742",
+                        "tick": "-77208",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MATIC"
+                        },
+                        "token0Price": "2253.78957078353834288908972459159",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004436971458929709544988278810846458"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x2e8daf55f212be91d3fa882cceab193a08fddeb2",
+                        "liquidity": "1436897002876521827",
+                        "sqrtPrice": "298333365399814122642726994878",
+                        "tick": "26518",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "YFI"
+                        },
+                        "token0Price": "0.07052701660240150902334039635375766",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "14.17896358267264478353954319391204"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x3a0f221ea8b150f3d3d27de8928851ab5264bb65",
+                        "liquidity": "124227226716524407115",
+                        "sqrtPrice": "7016618253958262013733951817",
+                        "tick": "-48484",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "LINK"
+                        },
+                        "token0Price": "127.4980285728086558194174582625669",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.007843258528730449265566127270116087"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x3afdc5e6dfc0b0a507a8e023c9dce2cafc310316",
+                        "liquidity": "8336528130418634079",
+                        "sqrtPrice": "87912417793281158854560610557",
+                        "tick": "2080",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MKR"
+                        },
+                        "token0Price": "0.8121920213824668348290014799430188",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "1.231235931495432765835069112581768"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x4585fe77225b41b697c938b018e2ac67ac5a20c0",
+                        "liquidity": "90469193887266635",
+                        "sqrtPrice": "31448892249712931923617355148663922",
+                        "tick": "257843",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "WBTC"
+                        },
+                        "token0Price": "0.06346707191868246479440743488869202",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "15.75620191335210018504452737158919"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x4674abc5796e1334b5075326b39b748bee9eaa34",
+                        "liquidity": "607125206269994931786",
+                        "sqrtPrice": "29282556965520213696734200259",
+                        "tick": "-19908",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "AAVE"
+                        },
+                        "token0Price": "7.320507229029441907615909260571832",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.136602556177323892396217750539673"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+                        "liquidity": "9339538904044805042",
+                        "sqrtPrice": "3594648391302490947229704",
+                        "tick": "-200023",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token0Price": "0.0004857874987434761333402430866651358",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDT"
+                        },
+                        "token1Price": "2058.513244137757807877509448755265"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x5598931bfbb43eec686fa4b5b92b5152ebadc2f6",
+                        "liquidity": "124974537221796817189",
+                        "sqrtPrice": "35386313551136410577214533229",
+                        "tick": "-16121",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "COMP"
+                        },
+                        "token0Price": "5.012894038754594854744609810298697",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.199485565078578909909103356989644"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb",
+                        "liquidity": "36848559360146790796065",
+                        "sqrtPrice": "29318514600025529453204792515",
+                        "tick": "-19884",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "AAVE"
+                        },
+                        "token0Price": "7.30256179699667860772266280445815",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.1369382454813692315585910713627569"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x5c0f97e0ed70e0163b799533ce142f650e39a3e6",
+                        "liquidity": "0",
+                        "sqrtPrice": "0",
+                        "tick": null,
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "cDAI"
+                        },
+                        "token0Price": "0",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x5d4f3c6fa16908609bac31ff148bd002aa6b8c83",
+                        "liquidity": "46381987356147889467",
+                        "sqrtPrice": "6991702644378478692164592508",
+                        "tick": "-48555",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "LINK"
+                        },
+                        "token0Price": "128.4083508468507231628715748945214",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.007787655502192951675063055261520298"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x5eb837c4b76239dcbe770be1de9a198b98078faf",
+                        "liquidity": "0",
+                        "sqrtPrice": "316473221230364024124015116607",
+                        "tick": "27699",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "YFI"
+                        },
+                        "token0Price": "0.06267368527360898961065662228176803",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "15.95565978982068864046815782842187"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x60594a405d53811d3bc4766596efd80fd545a270",
+                        "liquidity": "2571133373191334747995697",
+                        "sqrtPrice": "1747147084685331728485642092",
+                        "tick": "-76291",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "DAI"
+                        },
+                        "token0Price": "2056.365134012731884338996396657261",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004862949597130295192110064222755513"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x6ab3bba2f41e7eaa262fa5a1a9b3932fa161526f",
+                        "liquidity": "22377154170692391",
+                        "sqrtPrice": "31531995103147275766561921180279769",
+                        "tick": "257896",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "WBTC"
+                        },
+                        "token0Price": "0.06313297669045803679213263035245339",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "15.83958261469303909025687695457635"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x6e2a6e92d1c0df4fbf7b35e9aebf2e681c9e6f5f",
+                        "liquidity": "0",
+                        "sqrtPrice": "1871386047405566650789424911",
+                        "tick": "-74917",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "sUSD"
+                        },
+                        "token0Price": "1792.389508490753016319328173604203",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.000557914446197596132481044496776486"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x714b8443d0ada18ece1fce5702567e313bfa8f29",
+                        "liquidity": "0",
+                        "sqrtPrice": "1588054379363922873364314428",
+                        "tick": "-78201",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "TUSD"
+                        },
+                        "token0Price": "2489.02023844566018155779835769132",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004017645114145309552519275192034988"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x7bea39867e4169dbe237d55c8242a8f2fcdcc387",
+                        "liquidity": "694325009468388317",
+                        "sqrtPrice": "1744073440179585841956005180083008",
+                        "tick": "199998",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "2063.619535926946044454438480147317",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004845854492993135164190159156244755"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x82bd0e16516f828a0616038002e152aa6f27aedc",
+                        "liquidity": "240649539583045",
+                        "sqrtPrice": "26529539639898288558908572954945",
+                        "tick": "116279",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "cDAI"
+                        },
+                        "token0Price": "89186.62707804140137826140676536659",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.00001121244330862479204781016402894013"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x886072a44bdd944495eff38ace8ce75c1eacdaf6",
+                        "liquidity": "8807131254212396478",
+                        "sqrtPrice": "87370837852813611041707795167",
+                        "tick": "1956",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MKR"
+                        },
+                        "token0Price": "0.8222921922095030346737443207348292",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "1.216112726685383257602487852762988"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+                        "liquidity": "12707490141500289535",
+                        "sqrtPrice": "1746774591850409178635192658265276",
+                        "tick": "200028",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "2057.242251132743791188285217815138",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004860876250472627911245036297738497"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+                        "liquidity": "18705005180486081383",
+                        "sqrtPrice": "1746708162975804866345905755820611",
+                        "tick": "200028",
+                        "token0": {
+                            "decimals": "6",
+                            "symbol": "USDC"
+                        },
+                        "token0Price": "2057.398731635994981077057537813358",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004860506544615314158144325672196693"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0x99c7550be72f05ec31c446cd536f8a29c89fdb77",
+                        "liquidity": "5917763905886112884131",
+                        "sqrtPrice": "1678335751958799847690715408",
+                        "tick": "-77095",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MATIC"
+                        },
+                        "token0Price": "2228.442719965684712623620907105066",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004487438654090237395466453052996449"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8",
+                        "liquidity": "401640625394778360953793",
+                        "sqrtPrice": "6984608044374696864352349543",
+                        "tick": "-48575",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "LINK"
+                        },
+                        "token0Price": "128.6693443218486053536641112741439",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.007771858986851118352454074950751971"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xa80964c5bbd1a0e95777094420555fead1a26c1e",
+                        "liquidity": "13474898369231168925646",
+                        "sqrtPrice": "1741962775393160084699251254",
+                        "tick": "-76351",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "DAI"
+                        },
+                        "token0Price": "2068.623371720673554200176745283643",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004834132755486580242077325083249096"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0xaeac4a9ba7df813b5e6b24c0a76b7390a80a28b1",
+                        "liquidity": "43152903330087546919",
+                        "sqrtPrice": "2652531074512768216877753461",
+                        "tick": "-67940",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "1INCH"
+                        },
+                        "token0Price": "892.1506715398306559346146627149697",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.001120886899377684702632956987587882"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xc2e9f25be6257c210d7adf0d4cd6e3e881ba25f8",
+                        "liquidity": "1830921303209453693061970",
+                        "sqrtPrice": "1747247793328753897476328649",
+                        "tick": "-76290",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "DAI"
+                        },
+                        "token0Price": "2056.128089472698988419397828123754",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004863510231293291589043735643751547"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xc5af84701f98fa483ece78af83f11b6c38aca71d",
+                        "liquidity": "153298027661406071",
+                        "sqrtPrice": "3594635163262414679669047",
+                        "tick": "-200023",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token0Price": "0.0004857910740873058935008705554788555",
+                        "token1": {
+                            "decimals": "6",
+                            "symbol": "USDT"
+                        },
+                        "token1Price": "2058.498093812816710275399540510893"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xcbcdf9626bc03e24f779434178a73a0b4bad62ed",
+                        "liquidity": "631312729092328308",
+                        "sqrtPrice": "31457921265746489635408515648063859",
+                        "tick": "257849",
+                        "token0": {
+                            "decimals": "8",
+                            "symbol": "WBTC"
+                        },
+                        "token0Price": "0.06343064465651652841766270862586978",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "15.7652504623767101719082404333624"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xd35efae4097d005720608eaf37e42a5936c94b44",
+                        "liquidity": "18433763848487938160569",
+                        "sqrtPrice": "2522176264680601992359218672",
+                        "tick": "-68948",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "1INCH"
+                        },
+                        "token0Price": "986.752643922508843667621891416208",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.001013425204542478521047037057017581"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0xdc7b403e2e967eaf6c97d79316d285b8a112fda7",
+                        "liquidity": "1106599193828284",
+                        "sqrtPrice": "1574641456287302002325692165",
+                        "tick": "-78371",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "FEI"
+                        },
+                        "token0Price": "2531.604186786448122470634644020632",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0003950064568621897173766772878729209"
+                    },
+                    {
+                        "feeTier": "500",
+                        "id": "0xe3baa96ad46457d9e6cdd4e32abc11e2c124ec49",
+                        "liquidity": "12488787597753816431",
+                        "sqrtPrice": "1680489845408382447206947058",
+                        "tick": "-77069",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MATIC"
+                        },
+                        "token0Price": "2222.733435468584998876701925843939",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.0004498965031266492140510618420447679"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xe8c6c9227491c0a8156a0106a0204d881bb7e531",
+                        "liquidity": "14871323000075898664327",
+                        "sqrtPrice": "87367358843918943242307866240",
+                        "tick": "1955",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "MKR"
+                        },
+                        "token0Price": "0.8223576816290529102328138144581163",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "1.216015880120491841944488581606699"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xe931b03260b2854e77e8da8378a1bc017b13cb97",
+                        "liquidity": "191605649101077989663",
+                        "sqrtPrice": "2521001649258888182829468016",
+                        "tick": "-68957",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "1INCH"
+                        },
+                        "token0Price": "987.6723774686612513952993269277698",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.001012481489624052893865851833674848"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xea4ba4ce14fdd287f380b55419b1c5b6c3f22ab6",
+                        "liquidity": "25324656735533464123092",
+                        "sqrtPrice": "35301209892736637912491282467",
+                        "tick": "-16170",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "COMP"
+                        },
+                        "token0Price": "5.037093201481607668846373491883039",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.1985271981280514287047330391701542"
+                    },
+                    {
+                        "feeTier": "3000",
+                        "id": "0xede8dd046586d22625ae7ff2708f879ef7bdb8cf",
+                        "liquidity": "14644075505664310108592",
+                        "sqrtPrice": "5085214917016756298076020517",
+                        "tick": "-54923",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "SNX"
+                        },
+                        "token0Price": "242.7395502366805160825532499851783",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.004119641809606061519135113263436288"
+                    },
+                    {
+                        "feeTier": "10000",
+                        "id": "0xf5ce0293c24fd0990e0a5758e53f66a36ca0118f",
+                        "liquidity": "5846240819874137444",
+                        "sqrtPrice": "5129861389318040286255231879",
+                        "tick": "-54748",
+                        "token0": {
+                            "decimals": "18",
+                            "symbol": "SNX"
+                        },
+                        "token0Price": "238.5326903631920758744228334925314",
+                        "token1": {
+                            "decimals": "18",
+                            "symbol": "WETH"
+                        },
+                        "token1Price": "0.004192297493804269639277060986800154"
+                    }
+                ]
+            }
+        ]
+    }
+}
