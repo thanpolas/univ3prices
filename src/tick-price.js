@@ -12,7 +12,7 @@ entity.tick = (token0Decimals, token1Decimals, tick, optReverse = false) => {
   const t1dec = Number(token1Decimals);
   const absTick = Math.abs(tick);
 
-  const tokendecs = JSBI.exponentiate(
+  const denominator = JSBI.exponentiate(
     JSBI.BigInt(10),
     JSBI.BigInt(Math.abs(t0dec - t1dec)),
   );
