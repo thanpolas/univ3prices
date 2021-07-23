@@ -7,6 +7,15 @@ const chainContext = require('./chain-context');
 
 const entity = (module.exports = {});
 
+/**
+ * Calculates the price based on tick value.
+ *
+ * @param {string} token0Decimals Decimals of token 0.
+ * @param {string} token1Decimals Decimals of token 1.
+ * @param {string} tick The tick value.
+ * @param {boolean=} optReverse Set to true to reverse the token pair.
+ * @return {Object} The chain context.
+ */
 entity.tick = (token0Decimals, token1Decimals, tick, optReverse = false) => {
   const t0dec = Number(token0Decimals);
   const t1dec = Number(token1Decimals);
