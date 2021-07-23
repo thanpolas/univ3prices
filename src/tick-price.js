@@ -10,10 +10,7 @@ const entity = (module.exports = {});
 entity.tick = (token0Decimals, token1Decimals, tick, optReverse = false) => {
   const t0dec = Number(token0Decimals);
   const t1dec = Number(token1Decimals);
-  let absTick = Number(tick);
-  if (absTick < 0) {
-    absTick *= -1;
-  }
+  const absTick = Math.abs(tick);
 
   const tokendecs = JSBI.exponentiate(
     JSBI.BigInt(10),
