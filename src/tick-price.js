@@ -17,7 +17,7 @@ entity.tick = (token0Decimals, token1Decimals, tick, optReverse = false) => {
     JSBI.BigInt(Math.abs(t0dec - t1dec)),
   );
 
-  const ratioNumerator = 1.0001 ** tick;
+  const numerator = 1.0001 ** absTick;
 
   const fraction = {
     numerator: ratioNumerator,
