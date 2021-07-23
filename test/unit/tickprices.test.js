@@ -26,8 +26,8 @@ describe('Uniswap V3 Tick', () => {
           ethusdtfix.tick,
         ).toSignificant(5);
 
-        console.log('priceSqrt:', priceSqrt);
-        console.log('priceTick:', priceTick);
+        console.log('priceSqrt usdt/weth:', priceSqrt);
+        console.log('priceTick usdt/weth:', priceTick);
 
         const priceSqrtUsdc = univ3Price(
           susdfix.token0.decimals,
@@ -40,8 +40,8 @@ describe('Uniswap V3 Tick', () => {
           susdfix.tick,
         ).toSignificant(5);
 
-        console.log('priceSqrtUsdc:', priceSqrtUsdc);
-        console.log('priceTickUsdc:', priceTickUsdc);
+        console.log('priceSqrt usdc/susd:', priceSqrtUsdc);
+        console.log('priceTick usdc/susd:', priceTickUsdc);
       });
     });
   });
