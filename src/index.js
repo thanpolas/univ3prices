@@ -15,11 +15,11 @@
 const { getPrice, Q96, Q192 } = require('./univ3prices');
 const { encodeSqrtRatioX96, sqrt } = require('./utils');
 const { Rounding } = require('./rounding');
-const { tick, sqrtRatioToTick } = require('./tick-price');
+const { tickPrice, sqrtRatioToTick } = require('./tick-price');
 
 const api = (module.exports = getPrice);
 
-api.tick = tick;
+api.tickPrice = tickPrice;
 api.sqrtRatioToTick = sqrtRatioToTick;
 api.encodeSqrtRatioX96 = encodeSqrtRatioX96;
 api.sqrt = sqrt;

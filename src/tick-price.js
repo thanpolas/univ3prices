@@ -16,7 +16,12 @@ const entity = (module.exports = {});
  * @param {boolean=} optReverse Set to true to reverse the token pair.
  * @return {Object} The chain context.
  */
-entity.tick = (token0Decimals, token1Decimals, tick, optReverse = false) => {
+entity.tickPrice = (
+  token0Decimals,
+  token1Decimals,
+  tick,
+  optReverse = false,
+) => {
   const t0dec = Number(token0Decimals);
   const t1dec = Number(token1Decimals);
   const absTick = Math.abs(tick);
