@@ -27,28 +27,33 @@ entity.getPrice = (
   sqrtRatioX96,
   optReverse = false,
 ) => {
-  const token0decs = JSBI.exponentiate(
+  const scalarNumerator = JSBI.exponentiate(
     JSBI.BigInt(10),
     JSBI.BigInt(token0Decimals),
   );
-  const token1decs = JSBI.exponentiate(
+  const scalarDenominator = JSBI.exponentiate(
     JSBI.BigInt(10),
     JSBI.BigInt(token1Decimals),
   );
 
   const sqrtRatioX96BI = JSBI.BigInt(sqrtRatioX96);
 
-  const origValue = JSBI.multiply(sqrtRatioX96BI, sqrtRatioX96BI);
+  const inputNumerator = JSBI.multiply(sqrtRatioX96BI, sqrtRatioX96BI);
+  const inputDenominator = entity.Q192;
 
-  const token0 = JSBI.BigInt(JSBI.multiply(entity.Q192, token0decs));
-  const token1 = JSBI.BigInt(JSBI.multiply(origValue, token1decs));
+  const adjustedForDecimalsNumerator = JSBI.BigInt(
+    JSBI.multiply(scalarNumerator, inputNumerator),
+  );
+  const adjustedForDecimalsDenominator = JSBI.BigInt(
+    JSBI.multiply(scalarDenominator, inputDenominator),
+  );
 
-  let numerator = token1;
-  let denominator = token0;
+  let numerator = adjustedForDecimalsNumerator;
+  let denominator = adjustedForDecimalsDenominator;
 
   if (optReverse) {
-    numerator = token0;
-    denominator = token1;
+    numerator = adjustedForDecimalsDenominator;
+    denominator = adjustedForDecimalsNumerator;
   }
 
   const fraction = { numerator, denominator };
