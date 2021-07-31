@@ -11,6 +11,8 @@ describe('API Surface Tests', () => {
     expect(univ3Prices).toContainAllKeys([
       'encodeSqrtRatioX96',
       'sqrt',
+      'tickPrice',
+      'sqrtRatioToTick',
       'Rounding',
       'Q96',
       'Q192',
