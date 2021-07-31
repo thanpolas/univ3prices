@@ -1,15 +1,61 @@
 const JSBI = require('jsbi');
 const univ3Price = require('../..');
+const subfix = require('../fixtures/subgraph-results.fix');
 
+const { eth_usdt: ethusdtfix, susd_usdc: susdfix } = subfix;
 const { encodeSqrtRatioX96, Rounding } = univ3Price;
 
 describe('Uniswap V3 Prices', () => {
   describe('toSignificant', () => {
     describe('Price', () => {
+      it('Price of ETH USDT from subgraph', () => {
+        const price = univ3Price(
+          ethusdtfix.token0.decimals,
+          ethusdtfix.token1.decimals,
+          ethusdtfix.sqrtPrice,
+        ).toSignificant();
+
+        expect(price).toBeString();
+        expect(price).toEqual('2061.1');
+      });
+      it('Price of ETH USDT from subgraph reversed', () => {
+        const price = univ3Price(
+          ethusdtfix.token0.decimals,
+          ethusdtfix.token1.decimals,
+          ethusdtfix.sqrtPrice,
+          true,
+        ).toSignificant();
+
+        expect(price).toBeString();
+        expect(price).toEqual('0.00048518');
+      });
+
+      it('Price of SUSD USDC from subgraph', () => {
+        const price = univ3Price(
+          susdfix.token0.decimals,
+          susdfix.token1.decimals,
+          susdfix.sqrtPrice,
+        ).toSignificant();
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.009');
+      });
+      it('Price of SUSD USDC from subgraph reversed', () => {
+        const price = univ3Price(
+          susdfix.token0.decimals,
+          susdfix.token1.decimals,
+          susdfix.sqrtPrice,
+          true,
+        ).toSignificant();
+
+        expect(price).toBeString();
+        expect(price).toEqual('0.99107');
+      });
+
       it('Price of token0 to token1 for stables', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-        const price = univ3Price(6, 18, sqrtRatioX96).toSignificant(5);
+        const price = univ3Price(18, 6, sqrtRatioX96).toSignificant();
 
         expect(price).toBeString();
         expect(price).toEqual('1.01');
@@ -17,7 +63,7 @@ describe('Uniswap V3 Prices', () => {
       it('Price of token1 to token0 for stables', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-        const price = univ3Price(6, 18, sqrtRatioX96, true).toSignificant(5);
+        const price = univ3Price(18, 6, sqrtRatioX96, true).toSignificant(5);
 
         expect(price).toBeString();
         expect(price).toEqual('0.9901');
@@ -127,7 +173,7 @@ describe('Uniswap V3 Prices', () => {
       it('Price of token0 to token1', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-        const price = univ3Price(6, 18, sqrtRatioX96).toFixed(5);
+        const price = univ3Price(18, 6, sqrtRatioX96).toFixed(5);
 
         expect(price).toBeString();
         expect(price).toEqual('1.01000');
@@ -135,7 +181,7 @@ describe('Uniswap V3 Prices', () => {
       it('Price of token1 to token0', () => {
         const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-        const price = univ3Price(6, 18, sqrtRatioX96, true).toFixed(5);
+        const price = univ3Price(18, 6, sqrtRatioX96, true).toFixed(5);
 
         expect(price).toBeString();
         expect(price).toEqual('0.99010');
@@ -232,7 +278,7 @@ describe('Uniswap V3 Prices', () => {
     it('Validations and type checks', () => {
       const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-      const scalar = univ3Price(6, 18, sqrtRatioX96).toScalar();
+      const scalar = univ3Price(18, 6, sqrtRatioX96).toScalar();
 
       expect(scalar).toBeObject();
       expect(scalar).toContainAllKeys(['numerator', 'denominator']);

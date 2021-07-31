@@ -30,7 +30,7 @@ console.log(prices);
 
 ## univ3prices(decimals0, decimals1, sqrtRatioX96, optReverse)
 
-> The default function exposed, calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs.
+> The default function; calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs.
 
 -   `decimals0` **{number}** The decimals of token 0.
 -   `decimals1` **{number}** The decimals of token 1.
@@ -147,23 +147,38 @@ scalar.numerator instanceOf JSBI; // true
 scalar.denominator instanceOf JSBI; // true
 ```
 
+## univ3prices.tickPrice(decimals0, decimals1, tick, optReverse)
+
+> calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs using the current tick value.
+
+-   `decimals0` **{number}** The decimals of token 0.
+-   `decimals1` **{number}** The decimals of token 1.
+-   `tick` **{string}** The current tick value.
+-   `optReverse` **{boolean=}** Optionally, set to true, to get the reversed price (i.e. token1 / token0).
+
+The `univ3prices.tickPrice()` returns an object that contains three functions depending on the output type you wish to have, and has the exact same functions as the default function:
+
+-   [toSignificant()][tosignificant].
+-   [toFixed()][tofixed].
+-   [toScalar()][toscalar].
+
 ---
 
-## How to get the sqrtRatioX96 Value From Uniswap
+## How to get the sqrtRatioX96 and tick Values From Uniswap
 
-In regards to the `sqrtRatioX96` value. there are two primary ways to get it:
+In regards to the `sqrtRatioX96` and `tick` values. there are two primary ways to get it:
 
 ### Using the Liquidity Pool Contract
 
 Query the Liquidity Pool contract of interest and [use the `slot0()` method][slot0].
 
-This method will return a collection of properties, the one you care about is
-`sqrtPriceX96`.
+This method will return a collection of properties, the ones you care about is
+`sqrtPriceX96` or `tick`.
 
 ### Using the Subgraph
 
 Use the [Uniswap V3 Subgraph][univ3graph] that is publicly available and fetch
-the `sqrtPrice` property from the `Pool` schema.
+the `sqrtPrice` or `tick` property from the `Pool` schema.
 
 ## Utility Functions and Constants
 
@@ -214,6 +229,10 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
+-   **v1.1.0**, _31 Jul 2021_
+    -   Added `tickPrice()` function to calculate price based on current tick value.
+    -   Refactored the default price calculation function with better variable names.
+    -   Fixed a decimal miscalculation issue on pairs with different decimal values.
 -   **v1.0.0**, _19 Jul 2021_
     -   Big Bang
 
@@ -236,3 +255,6 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [circle-url]: https://circleci.com/gh/thanpolas/univ3prices/tree/main
 [circle-image]: https://circleci.com/gh/thanpolas/univ3prices/tree/main.svg?style=svg
 [jorropo]: https://github.com/Jorropo
+[tosignificant]: #tosignificantdigits-optformat-optrounding
+[tofixed]: #tofixeddigits-optformat-optrounding
+[toscalar]: #toscalar
