@@ -12,7 +12,6 @@ describe('API Surface Tests', () => {
       'encodeSqrtRatioX96',
       'sqrt',
       'tickPrice',
-      'sqrtRatioToTick',
       'Rounding',
       'Q96',
       'Q192',

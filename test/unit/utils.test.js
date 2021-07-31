@@ -44,7 +44,7 @@ describe('Utils', () => {
       }
     });
 
-    it('correct for all even powers of 2', async () => {
+    it('correct for all even powers of 2', () => {
       for (let i = 0; i < 1000; i += 1) {
         const root = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(i));
         const rootSquared = JSBI.multiply(root, root);

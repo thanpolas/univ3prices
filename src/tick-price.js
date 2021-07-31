@@ -42,18 +42,3 @@ entity.tickPrice = (
 
   return chainCtx;
 };
-
-/**
- * WIP: Calculate the tick from the sqrt ratio.
- *
- * @param {string} decimals0 Decimals of token 0.
- * @param {string} decimals1 Decimals of token 1.
- * @param {string} sqrtRatioX96 The tick value.
- * @return {number} The tick value.
- */
-entity.sqrtRatioToTick = (decimals0, decimals1, sqrtRatioX96) => {
-  return (
-    (1 / (Number(sqrtRatioX96) ** 2 / 2 ** (96 * 2))) *
-    10 ** (Number(decimals1) - Number(decimals0))
-  );
-};
