@@ -229,6 +229,10 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
+-   **v1.1.0**, _31 Jul 2021_
+    -   Added `tickPrice()` function to calculate price based on current tick value.
+    -   Refactored the default price calculation function with better variable names.
+    -   Fixed a decimal miscalculation issue on pairs with different decimal values.
 -   **v1.0.0**, _19 Jul 2021_
     -   Big Bang
 
