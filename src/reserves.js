@@ -3,23 +3,38 @@
  */
 
 const JSBI = require('jsbi');
-const chainContext = require('./chain-context');
+
+// const chainContext = require('./chain-context');
 const { RESOLUTION } = require('./constants');
+const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
+const { tickRange } = require('./utils');
 
 const entity = (module.exports = {});
 
 /**
  * Calculates the price based on tick value.
  *
- * @param {string} token0Decimals Decimals of token 0.
- * @param {string} token1Decimals Decimals of token 1.
  * @param {string} liquidity The liquidity value.
  * @param {string} sqrtPrice The sqrt price value.
- * @param {boolean=} optReverse Set to true to reverse the token pair.
+ * @param {string} tickSpacing The spacing between the ticks.
  * @return {Object} The chain context.
  */
-entity.reserves = (token0Decimals, token1Decimals, liquidity, sqrtPrice) => {
-  return res;
+entity.reserves = (liquidity, sqrtPrice, tickSpacing) => {
+  const tick = getTickAtSqrtRatio(sqrtPrice);
+
+  const [tickLow, tickHigh] = tickRange(tick, tickSpacing);
+
+  const sqrtA = getSqrtRatioAtTick(tickLow);
+  const sqrtB = getSqrtRatioAtTick(tickHigh);
+
+  const reserves = entity.getAmountsForLiquidity(
+    sqrtPrice,
+    sqrtA,
+    sqrtB,
+    liquidity,
+  );
+
+  return reserves;
 };
 
 entity.getAmountsForLiquidity = (
