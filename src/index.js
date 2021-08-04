@@ -12,11 +12,13 @@
  * @fileoverview Public API
  */
 
-const { getPrice, Q96, Q192 } = require('./univ3prices');
+const { getPrice } = require('./univ3prices');
 const { encodeSqrtRatioX96, sqrt } = require('./utils');
 const { Rounding } = require('./rounding');
 const { tickPrice } = require('./tick-price');
-const { reserves } = require('./reserves');
+const { reserves, getAmountsForLiquidity } = require('./reserves');
+const tickMath = require('./tick-math');
+const consts = require('./constants');
 
 const api = (module.exports = getPrice);
 
@@ -24,6 +26,7 @@ api.tickPrice = tickPrice;
 api.encodeSqrtRatioX96 = encodeSqrtRatioX96;
 api.sqrt = sqrt;
 api.Rounding = Rounding;
-api.Q96 = Q96;
-api.Q192 = Q192;
 api.reserves = reserves;
+api.getAmountsForLiquidity = getAmountsForLiquidity;
+api.tickMath = tickMath;
+api.consts = consts;
