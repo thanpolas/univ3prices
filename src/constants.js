@@ -4,7 +4,7 @@
 
 const JSBI = require('jsbi');
 
-const consts = {};
+const consts = (module.exports = {});
 
 /** @const {number} RESOLUTION fixed point resolution  */
 consts.RESOLUTION = 96;
