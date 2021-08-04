@@ -5,7 +5,7 @@
 const JSBI = require('jsbi');
 
 // const chainContext = require('./chain-context');
-const { RESOLUTION } = require('./constants');
+const { RESOLUTION, Q96 } = require('./constants');
 const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
 const { tickRange } = require('./utils');
 
@@ -95,7 +95,8 @@ entity.getAmount0ForLiquidity = (sqrtRatioAX96, sqrtRatioBX96, liquidity) => {
 entity.getAmount1ForLiquidity = (sqrtRatioAX96, sqrtRatioBX96, liquidity) => {
   const sqrtDiff = JSBI.subtract(sqrtRatioBX96, sqrtRatioAX96);
   const multipliedRes = JSBI.multiply(liquidity, sqrtDiff);
-  const amount1 = JSBI.divide(multipliedRes, RESOLUTION);
+
+  const amount1 = JSBI.divide(multipliedRes, Q96);
 
   return amount1;
 };
