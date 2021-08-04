@@ -8,7 +8,9 @@ const JSBI = require('jsbi');
 
 const { Q32, ZERO, ONE, TWO, MaxUint256 } = require('./constants');
 
-const POWERS_OF_2 = [128, 64, 32, 16, 8, 4, 2, 1].map((pow) => [
+const entity = (module.exports = {});
+
+entity.POWERS_OF_2 = [128, 64, 32, 16, 8, 4, 2, 1].map((pow) => [
   pow,
   JSBI.exponentiate(TWO, JSBI.BigInt(pow)),
 ]);
@@ -16,24 +18,22 @@ const POWERS_OF_2 = [128, 64, 32, 16, 8, 4, 2, 1].map((pow) => [
 /**
  * The minimum tick that can be used on any pool.
  */
-const MIN_TICK = -887272;
+entity.MIN_TICK = -887272;
 /**
  * The maximum tick that can be used on any pool.
  */
-const MAX_TICK = -MIN_TICK;
+entity.MAX_TICK = -entity.MIN_TICK;
 
 /**
  * The sqrt ratio corresponding to the minimum tick that could be used on any pool.
  */
-const MIN_SQRT_RATIO = JSBI.BigInt('4295128739');
+entity.MIN_SQRT_RATIO = JSBI.BigInt('4295128739');
 /**
  * The sqrt ratio corresponding to the maximum tick that could be used on any pool.
  */
-const MAX_SQRT_RATIO = JSBI.BigInt(
+entity.MAX_SQRT_RATIO = JSBI.BigInt(
   '1461446703485210103287273052203988822378723970342',
 );
-
-const entity = (module.exports = {});
 
 /**
  * Multiplies and right shifts.
@@ -58,7 +58,9 @@ function mulShift(val, mulBy) {
  */
 entity.getSqrtRatioAtTick = (tick) => {
   invariant(
-    tick >= MIN_TICK && tick <= MAX_TICK && Number.isInteger(tick),
+    tick >= entity.MIN_TICK &&
+      tick <= entity.MAX_TICK &&
+      Number.isInteger(tick),
     'TICK',
   );
   const absTick = tick < 0 ? tick * -1 : tick;
@@ -134,7 +136,7 @@ entity.getSqrtRatioAtTick = (tick) => {
     ? JSBI.add(JSBI.divide(ratio, Q32), ONE)
     : JSBI.divide(ratio, Q32);
 
-  return JSBI.BigInt(result);
+  return result;
 };
 
 /**
@@ -149,8 +151,8 @@ entity.getSqrtRatioAtTick = (tick) => {
 entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
   const sqrtRatio = JSBI.BigInt(sqrtRatioX96);
   invariant(
-    JSBI.greaterThanOrEqual(sqrtRatio, MIN_SQRT_RATIO) &&
-      JSBI.lessThan(sqrtRatio, MAX_SQRT_RATIO),
+    JSBI.greaterThanOrEqual(sqrtRatio, entity.MIN_SQRT_RATIO) &&
+      JSBI.lessThan(sqrtRatio, entity.MAX_SQRT_RATIO),
     'SQRT_RATIO',
   );
 
@@ -210,7 +212,7 @@ entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
     result = tickHigh;
   }
 
-  return JSBI.BigInt(result);
+  return result;
 };
 
 /**
@@ -224,7 +226,7 @@ entity.mostSignificantBit = (x) => {
   invariant(JSBI.lessThanOrEqual(x, MaxUint256), 'MAX');
 
   let msb = 0;
-  for (const [power, min] of POWERS_OF_2) {
+  for (const [power, min] of entity.POWERS_OF_2) {
     if (JSBI.greaterThanOrEqual(x, min)) {
       x = JSBI.signedRightShift(x, JSBI.BigInt(power));
       msb += power;
