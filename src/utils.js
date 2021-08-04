@@ -48,3 +48,20 @@ utils.sqrt = (value) => {
   }
   return z;
 };
+
+/**
+ * Calculates the tick local range (bottom and top) values given the tick and
+ * spacing.
+ *
+ * @param {string} tickStr The tick value.
+ * @param {string} tickSpacingStr The tick spacing value.
+ * @return {Array<number>} a tuple of the lower and highest tick local range.
+ */
+utils.tickRange = (tickStr, tickSpacingStr) => {
+  const tick = Number(tickStr);
+  const tickSpacing = Number(tickSpacingStr);
+
+  const tickLow = Math.floor(tick / tickSpacing) * tickSpacing;
+  const tickHigh = tickLow + tickSpacing;
+  return [tickLow, tickHigh];
+};
