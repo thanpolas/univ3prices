@@ -5,12 +5,9 @@
 const JSBI = require('jsbi');
 
 const chainContext = require('./chain-context');
+const { Q192 } = require('./constants');
 
 const entity = (module.exports = {});
-
-// Constants required in ratio calculations.
-entity.Q96 = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(96));
-entity.Q192 = JSBI.exponentiate(entity.Q96, JSBI.BigInt(2));
 
 /**
  * Calculates the price (ratio) from sqrt ratio.
@@ -39,7 +36,7 @@ entity.getPrice = (
   const sqrtRatioX96BI = JSBI.BigInt(sqrtRatioX96);
 
   const inputNumerator = JSBI.multiply(sqrtRatioX96BI, sqrtRatioX96BI);
-  const inputDenominator = entity.Q192;
+  const inputDenominator = Q192;
 
   const adjustedForDecimalsNumerator = JSBI.BigInt(
     JSBI.multiply(scalarNumerator, inputNumerator),
