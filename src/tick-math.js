@@ -130,9 +130,11 @@ entity.getSqrtRatioAtTick = (tick) => {
   }
 
   // back to Q96
-  return JSBI.greaterThan(JSBI.remainder(ratio, Q32), ZERO)
+  const result = JSBI.greaterThan(JSBI.remainder(ratio, Q32), ZERO)
     ? JSBI.add(JSBI.divide(ratio, Q32), ONE)
     : JSBI.divide(ratio, Q32);
+
+  return JSBI.BigInt(result);
 };
 
 /**
@@ -145,13 +147,14 @@ entity.getSqrtRatioAtTick = (tick) => {
  * @return {JSBI} JSBI value of the tick.
  */
 entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
+  const sqrtRatio = JSBI.BigInt(sqrtRatioX96);
   invariant(
-    JSBI.greaterThanOrEqual(sqrtRatioX96, MIN_SQRT_RATIO) &&
-      JSBI.lessThan(sqrtRatioX96, MAX_SQRT_RATIO),
+    JSBI.greaterThanOrEqual(sqrtRatio, MIN_SQRT_RATIO) &&
+      JSBI.lessThan(sqrtRatio, MAX_SQRT_RATIO),
     'SQRT_RATIO',
   );
 
-  const sqrtRatioX128 = JSBI.leftShift(sqrtRatioX96, JSBI.BigInt(32));
+  const sqrtRatioX128 = JSBI.leftShift(sqrtRatio, JSBI.BigInt(32));
 
   const msb = entity.mostSignificantBit(sqrtRatioX128);
 
@@ -207,7 +210,7 @@ entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
     result = tickHigh;
   }
 
-  return result;
+  return JSBI.BigInt(result);
 };
 
 /**
