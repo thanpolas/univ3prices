@@ -7,7 +7,7 @@ const JSBI = require('jsbi');
 const consts = (module.exports = {});
 
 /** @const {number} RESOLUTION fixed point resolution  */
-consts.RESOLUTION = 96;
+consts.RESOLUTION = JSBI.BigInt(96);
 
 // constants used internally but not expected to be used externally
 consts.NEGATIVE_ONE = JSBI.BigInt(-1);
