@@ -14,12 +14,14 @@ const entity = (module.exports = {});
 /**
  * Calculates the price based on tick value.
  *
- * @param {string} liquidity The liquidity value.
- * @param {string} sqrtPrice The sqrt price value.
+ * @param {string} liquidityStr The liquidity value.
+ * @param {string} sqrtPriceStr The sqrt price value.
  * @param {string} tickSpacing The spacing between the ticks.
  * @return {Object} The chain context.
  */
-entity.reserves = (liquidity, sqrtPrice, tickSpacing) => {
+entity.reserves = (liquidityStr, sqrtPriceStr, tickSpacing) => {
+  const sqrtPrice = JSBI.BigInt(sqrtPriceStr);
+  const liquidity = JSBI.BigInt(liquidityStr);
   const tick = getTickAtSqrtRatio(sqrtPrice);
 
   const [tickLow, tickHigh] = tickRange(tick, tickSpacing);
@@ -80,8 +82,7 @@ entity.getAmountsForLiquidity = (
 /// @param liquidity The liquidity being valued
 /// @return amount0 The amount of token0
 entity.getAmount0ForLiquidity = (sqrtRatioAX96, sqrtRatioBX96, liquidity) => {
-  // eslint-disable-next-line no-bitwise
-  const leftShiftedLiquidity = liquidity << RESOLUTION;
+  const leftShiftedLiquidity = JSBI.leftShift(liquidity, RESOLUTION);
   const sqrtDiff = JSBI.subtract(sqrtRatioBX96, sqrtRatioAX96);
   const multipliedRes = JSBI.multiply(leftShiftedLiquidity, sqrtDiff);
   const numerator = JSBI.divide(multipliedRes, sqrtRatioBX96);
