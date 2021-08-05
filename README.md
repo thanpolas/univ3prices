@@ -347,9 +347,9 @@ This library has been a study and break down, to understand how Uniswap V3 works
 
 In particular, the [Uniswap V3 SDK's Pool Class][uni-pool] and the [Uniswap SDK Core's Price][uni-price] and [Fraction][uni-fraction] classes were reverse engineered and rewritten in a functional manner. Most of the tests where also ported directly from the excellently tested SDK and Core packages.
 
-Thank you goes to [JNP][https://github.com/jnp777/] who helped me understand how to work with tick and sqrt ranges.
+Thank you goes to [JNP][jnp] who helped me understand how to work with tick and sqrt ranges.
 
-Thank you goes to [Georgios Konstantopoulos][https://github.com/gakonst] who helped me with liquidity calculations and code review.
+Thank you goes to [Georgios Konstantopoulos][gakonst] who helped me with liquidity calculations and code review.
 
 Finally, thank you goes to [Jorropo.eth][jorropo] who has accompanied and helped me in the weeks long journey of discovering how to calculate Uniswap's V3 sqrt ratios, on Uniswap's Discord. He also gave the following excellent explanation as to why the Token Pair reserves are square rooted:
 
@@ -384,7 +384,7 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
--   **v2.0.0**, _05 Aug 2021_
+-   **v2.0.0**, _XX Aug 2021_
     -   Implemented the liquidity calculation functions `getAmountsForCurrentLiquidity()` and `getAmountsForLiquidityRange()`.
     -   Implemented Tick Math functions at `tickMath.getSqrtRatioAtTick()` and `tickMath.getTickAtSqrtRatio`.
     -   Added `sqrtPrice` function on the API (same as the default export).
@@ -418,6 +418,8 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [circle-url]: https://circleci.com/gh/thanpolas/univ3prices/tree/main
 [circle-image]: https://circleci.com/gh/thanpolas/univ3prices/tree/main.svg?style=svg
 [jorropo]: https://github.com/Jorropo
+[jpn]: https://github.com/jnp777/
+[gakonst]: https://github.com/gakonst/
 [dai-weth-pool]: https://etherscan.io/address/0x60594a405d53811d3bc4766596efd80fd545a270
 [tosignificant]: #tosignificantdigits-optformat-optrounding
 [rounding]: #rounding-values
