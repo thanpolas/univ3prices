@@ -9,22 +9,25 @@ const { encodeSqrtRatioX96: encodePriceSqrt } = univ3Price;
 const { reserves, getAmountsForLiquidity } = univ3Price;
 
 describe('Uniswap V3 Reserves', () => {
-  it('Reserves of token0 and token1 should be as expected', () => {
-    // Using DAI/WETH: https://etherscan.io/address/0x60594a405d53811d3bc4766596efd80fd545a270
+  describe('reserves()', () => {
+    it('Reserves of token0 and token1 should be as expected', () => {
+      // Using DAI/WETH: https://etherscan.io/address/0x60594a405d53811d3bc4766596efd80fd545a270
 
-    const liquidity = '2830981547246997099758055';
-    const sqrtPrice = '1550724133884968571999296281';
-    const tickSpacing = '60';
-    const [token0Reserves, token1Reserves] = reserves(
-      liquidity,
-      sqrtPrice,
-      tickSpacing,
-    );
-    console.log(
-      `token0 reserves: "${token0Reserves}"\ntoken1 reserves: "${token1Reserves}"`,
-    );
+      const liquidity = '2830981547246997099758055';
+      const sqrtPrice = '1550724133884968571999296281';
+      const tickSpacing = '60';
+      const [token0Reserves, token1Reserves] = reserves(
+        18,
+        18,
+        liquidity,
+        sqrtPrice,
+        tickSpacing,
+      );
+
+      expect(token0Reserves).toEqual('116596.9');
+      expect(token1Reserves).toEqual('121.4');
+    });
   });
-
   describe('uniswap-v3-periphery spec', () => {
     it('amounts for price inside', () => {
       const sqrtPriceX96 = encodePriceSqrt(1, 1);
