@@ -13,21 +13,43 @@
  */
 
 const { sqrtPrice } = require('./sqrt-price');
-const { encodeSqrtRatioX96, sqrt } = require('./utils');
+const {
+  encodeSqrtRatioX96,
+  sqrt,
+  tickRange,
+  biConv,
+  expDecs,
+} = require('./utils');
 const { Rounding } = require('./rounding');
 const { tickPrice } = require('./tick-price');
-const { reserves, getAmountsForLiquidity } = require('./reserves');
-const tickMath = require('./tick-math');
+const {
+  getAmountsForLiquidityFormatted,
+  getAmountsForLiquidity,
+} = require('./reserves');
+const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
 const consts = require('./constants');
 
 const api = (module.exports = sqrtPrice);
 
 api.tickPrice = tickPrice;
 api.sqrtPrice = sqrtPrice;
-api.encodeSqrtRatioX96 = encodeSqrtRatioX96;
-api.sqrt = sqrt;
-api.Rounding = Rounding;
-api.reserves = reserves;
+
+// Liquidity Functions
+api.getAmountsForLiquidityFormatted = getAmountsForLiquidityFormatted;
 api.getAmountsForLiquidity = getAmountsForLiquidity;
-api.tickMath = tickMath;
+
+api.tickMath = {
+  getSqrtRatioAtTick,
+  getTickAtSqrtRatio,
+};
+
 api.consts = consts;
+
+api.utils = {
+  encodeSqrtRatioX96,
+  sqrt,
+  Rounding,
+  tickRange,
+  expDecs,
+  biConv,
+};
