@@ -6,6 +6,7 @@ const JSBI = require('jsbi');
 
 const chainContext = require('./chain-context');
 const { Q192 } = require('./constants');
+const { expDecs } = require('./utils');
 
 const entity = (module.exports = {});
 
@@ -24,14 +25,8 @@ entity.getPrice = (
   sqrtRatioX96,
   optReverse = false,
 ) => {
-  const scalarNumerator = JSBI.exponentiate(
-    JSBI.BigInt(10),
-    JSBI.BigInt(token0Decimals),
-  );
-  const scalarDenominator = JSBI.exponentiate(
-    JSBI.BigInt(10),
-    JSBI.BigInt(token1Decimals),
-  );
+  const scalarNumerator = expDecs(token0Decimals);
+  const scalarDenominator = expDecs(token1Decimals);
 
   const sqrtRatioX96BI = JSBI.BigInt(sqrtRatioX96);
 
