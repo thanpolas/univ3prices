@@ -28,9 +28,9 @@ entity.POWERS_OF_2 = [128, 64, 32, 16, 8, 4, 2, 1].map((pow) => [
 /**
  * Multiplies and right shifts.
  *
- * @param {JSBI} val The multiplier.
+ * @param {bigint} val The multiplier.
  * @param {string} mulBy Multiply by.
- * @return {JSBI}
+ * @return {bigint}
  */
 function mulShift(val, mulBy) {
   return JSBI.signedRightShift(
@@ -44,7 +44,7 @@ function mulShift(val, mulBy) {
  * computed as sqrt(1.0001)^tick
  *
  * @param {string} tick the tick for which to compute the sqrt ratio.
- * @return {JSBI} The SQRT value.
+ * @return {bigint} The SQRT value.
  */
 entity.getSqrtRatioAtTick = (tick) => {
   invariant(
@@ -134,7 +134,7 @@ entity.getSqrtRatioAtTick = (tick) => {
  *
  * @param {string} sqrtRatioX96 the sqrt ratio as a Q64.96 for which to
  *    compute the tick.
- * @return {JSBI} JSBI value of the tick.
+ * @return {bigint} JSBI value of the tick.
  */
 entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
   const sqrtRatio = JSBI.BigInt(sqrtRatioX96);
@@ -206,7 +206,7 @@ entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
 /**
  * Calculates the most significant bit.
  *
- * @param {JSBI} x The value to calculate for.
+ * @param {bigint} x The value to calculate for.
  * @return {number} The most significant bit.
  */
 entity.mostSignificantBit = (x) => {

@@ -75,7 +75,7 @@ utils.tickRange = (tickStr, tickSpacingStr, tickStep = 0) => {
  * Will calculate the exponent for the given decimals number.
  *
  * @param {string|number} decs The decimal number.
- * @return {JSBI} The decimals exponent.
+ * @return {bigint} The decimals exponent.
  */
 utils.expDecs = (decs) => {
   return JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decs));
@@ -85,7 +85,7 @@ utils.expDecs = (decs) => {
  * Converts a value to JSBI, if it's already a JSBI will just return it.
  *
  * @param {string|number|JSBI} numstr The value to convert.
- * @return {JSBI} JSBI representation of the value.
+ * @return {bigint} JSBI representation of the value.
  */
 utils.biConv = (numstr) => {
   let bi = numstr;

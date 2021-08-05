@@ -104,9 +104,9 @@ entity.getAmountsForLiquidityRange = (
 /**
  * Computes the amount of token0 for a given amount of liquidity and a price range.
  *
- * @param {JSBI} sqrtRatioAX96 A sqrt price representing the first tick boundary.
- * @param {JSBI} sqrtRatioBX96 A sqrt price representing the second tick boundary.
- * @param {JSBI} liquidity The liquidity being valued.
+ * @param {bigint} sqrtRatioAX96 A sqrt price representing the first tick boundary.
+ * @param {bigint} sqrtRatioBX96 A sqrt price representing the second tick boundary.
+ * @param {bigint} liquidity The liquidity being valued.
  * @return {number} The amount of token0.
  */
 entity.getAmount0ForLiquidity = (sqrtRatioAX96, sqrtRatioBX96, liquidity) => {
@@ -131,9 +131,9 @@ entity.getAmount0ForLiquidity = (sqrtRatioAX96, sqrtRatioBX96, liquidity) => {
 /**
  * Computes the amount of token1 for a given amount of liquidity and a price range.
  *
- * @param {JSBI} sqrtRatioAX96 A sqrt price representing the first tick boundary.
- * @param {JSBI} sqrtRatioBX96 A sqrt price representing the second tick boundary.
- * @param {JSBI} liquidity The liquidity being valued.
+ * @param {bigint} sqrtRatioAX96 A sqrt price representing the first tick boundary.
+ * @param {bigint} sqrtRatioBX96 A sqrt price representing the second tick boundary.
+ * @param {bigint} liquidity The liquidity being valued.
  * @return {number} The amount of token1.
  */
 entity.getAmount1ForLiquidity = (sqrtRatioAX96, sqrtRatioBX96, liquidity) => {
