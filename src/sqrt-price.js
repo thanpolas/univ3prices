@@ -11,7 +11,7 @@ const { expDecs } = require('./utils');
 const entity = (module.exports = {});
 
 /**
- * Calculates the price (ratio) from sqrt ratio.
+ * Calculates the price (ratio) from sqrt price.
  *
  * @param {string} token0Decimals Decimals of token 0.
  * @param {string} token1Decimals Decimals of token 1.
@@ -19,7 +19,7 @@ const entity = (module.exports = {});
  * @param {boolean=} optReverse Set to true to reverse the token pair.
  * @return {Object} The chain context.
  */
-entity.getPrice = (
+entity.sqrtPrice = (
   token0Decimals,
   token1Decimals,
   sqrtRatioX96,
