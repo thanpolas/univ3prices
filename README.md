@@ -346,7 +346,11 @@ This library has been a study and break down, to understand how Uniswap V3 works
 
 In particular, the [Uniswap V3 SDK's Pool Class][uni-pool] and the [Uniswap SDK Core's Price][uni-price] and [Fraction][uni-fraction] classes were reverse engineered and rewritten in a functional manner. Most of the tests where also ported directly from the excellently tested SDK and Core packages.
 
-I want to thank [Jorropo.eth][jorropo] who has accompanied and helped me in the weeks long journey of discovering how to calculate Uniswap's V3 Liquidity Pool ratios, on Uniswap's Discord. He also gave the following excellent explanation as to why the Token Pair reserves are square rooted:
+Thank you goes to [JNP][https://github.com/jnp777/] who helped me understand how to work with tick and sqrt ranges.
+
+Thank you goes to [Georgios Konstantopoulos][https://github.com/gakonst] who helped me with liquidity calculations and code review.
+
+Finally, thank you goes to [Jorropo.eth][jorropo] who has accompanied and helped me in the weeks long journey of discovering how to calculate Uniswap's V3 sqrt ratios, on Uniswap's Discord. He also gave the following excellent explanation as to why the Token Pair reserves are square rooted:
 
 > This is so the difference gets exponentially written.
 >
