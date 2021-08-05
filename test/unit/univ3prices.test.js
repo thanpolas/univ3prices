@@ -274,16 +274,16 @@ describe('Uniswap V3 Prices', () => {
       });
     });
   });
-  describe('toScalar', () => {
+  describe('toFraction()', () => {
     it('Validations and type checks', () => {
       const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
 
-      const scalar = univ3Price(18, 6, sqrtRatioX96).toScalar();
+      const fraction = univ3Price(18, 6, sqrtRatioX96).toFraction();
 
-      expect(scalar).toBeObject();
-      expect(scalar).toContainAllKeys(['numerator', 'denominator']);
-      expect(scalar.numerator).toBeInstanceOf(JSBI);
-      expect(scalar.denominator).toBeInstanceOf(JSBI);
+      expect(fraction).toBeArray();
+      const [numerator, denominator] = fraction;
+      expect(numerator).toBeInstanceOf(JSBI);
+      expect(denominator).toBeInstanceOf(JSBI);
     });
   });
 });
