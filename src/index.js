@@ -25,7 +25,7 @@ const { tickPrice } = require('./tick-price');
 const {
   getAmountsForLiquidityFormatted,
   getAmountsForLiquidity,
-} = require('./reserves');
+} = require('./liquidity');
 const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
 const consts = require('./constants');
 
