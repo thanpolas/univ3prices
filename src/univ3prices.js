@@ -48,7 +48,7 @@ entity.getPrice = (
     denominator = adjustedForDecimalsNumerator;
   }
 
-  const fraction = { numerator, denominator };
+  const fraction = [numerator, denominator];
 
   const chainCtx = chainContext(fraction);
 

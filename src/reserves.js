@@ -44,8 +44,8 @@ entity.reserves = (dec0, dec1, liquidityStr, sqrtPriceStr, tickSpacing) => {
 
   const [amount0Raw, amount1Raw] = reserves;
 
-  const fraction0 = { numerator: amount0Raw, denominator: tok0Dec };
-  const fraction1 = { numerator: amount1Raw, denominator: tok1Dec };
+  const fraction0 = [amount0Raw, tok0Dec];
+  const fraction1 = [amount1Raw, tok1Dec];
 
   const reservesFormatted = [toFixed(fraction0, 1), toFixed(fraction1, 1)];
 
