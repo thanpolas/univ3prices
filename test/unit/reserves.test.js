@@ -3,20 +3,20 @@
  */
 
 const univ3Price = require('../..');
-// const subfix = require('../fixtures/subgraph-results.fix');
+
 const { encodeSqrtRatioX96: encodePriceSqrt } = univ3Price;
 
-const { reserves, getAmountsForLiquidity } = univ3Price;
+const { getAmountsForLiquidityFormatted, getAmountsForLiquidity } = univ3Price;
 
-describe('Uniswap V3 Reserves', () => {
-  describe('reserves()', () => {
+describe('Uniswap V3 Liquidity', () => {
+  describe('getAmountsForLiquidityFormatted()', () => {
     it('Reserves of token0 and token1 should be as expected', () => {
       // Using DAI/WETH: https://etherscan.io/address/0x60594a405d53811d3bc4766596efd80fd545a270
 
       const liquidity = '2830981547246997099758055';
       const sqrtPrice = '1550724133884968571999296281';
       const tickSpacing = '60';
-      const [token0Reserves, token1Reserves] = reserves(
+      const [token0Reserves, token1Reserves] = getAmountsForLiquidityFormatted(
         18,
         18,
         liquidity,
