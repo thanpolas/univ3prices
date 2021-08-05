@@ -7,19 +7,25 @@ const JSBI = require('jsbi');
 // const chainContext = require('./chain-context');
 const { RESOLUTION, Q96 } = require('./constants');
 const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
-const { tickRange } = require('./utils');
+const { tickRange, expDecs, biConv } = require('./utils');
+const { toFixed } = require('./formatting');
 
 const entity = (module.exports = {});
 
 /**
  * Calculates the reserves of tokens based on the current tick value.
  *
+ * @param {string} dec0 Decimals of first token.
+ * @param {string} dec1 Decimals of second token.
  * @param {string} liquidityStr The liquidity value.
  * @param {string} sqrtPriceStr The sqrt price value.
  * @param {string} tickSpacing The spacing between the ticks.
  * @return {Array<string>} A tuple with the reserves of token0 and token1.
  */
-entity.reserves = (liquidityStr, sqrtPriceStr, tickSpacing) => {
+entity.reserves = (dec0, dec1, liquidityStr, sqrtPriceStr, tickSpacing) => {
+  const tok0Dec = expDecs(dec0);
+  const tok1Dec = expDecs(dec1);
+
   const sqrtPrice = JSBI.BigInt(sqrtPriceStr);
   const liquidity = JSBI.BigInt(liquidityStr);
   const tick = getTickAtSqrtRatio(sqrtPrice);
@@ -36,7 +42,14 @@ entity.reserves = (liquidityStr, sqrtPriceStr, tickSpacing) => {
     liquidity,
   );
 
-  return reserves;
+  const [amount0Raw, amount1Raw] = reserves;
+
+  const fraction0 = { numerator: amount0Raw, denominator: tok0Dec };
+  const fraction1 = { numerator: amount1Raw, denominator: tok1Dec };
+
+  const reservesFormatted = [toFixed(fraction0, 1), toFixed(fraction1, 1)];
+
+  return reservesFormatted;
 };
 
 /**
