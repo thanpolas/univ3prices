@@ -6,8 +6,8 @@ describe('API Surface Tests', () => {
       expect(univ3Prices).toContainAllKeys([
         'sqrtPrice',
         'tickPrice',
-        'getAmountsForLiquidityFormatted',
-        'getAmountsForLiquidity',
+        'getAmountsForCurrentLiquidity',
+        'getAmountsForLiquidityRange',
         'tickMath',
         'constants',
         'utils',

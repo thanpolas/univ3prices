@@ -22,8 +22,8 @@ const {
 } = require('./utils');
 const { tickPrice } = require('./tick-price');
 const {
-  getAmountsForLiquidityFormatted,
-  getAmountsForLiquidity,
+  getAmountsForCurrentLiquidity,
+  getAmountsForLiquidityRange,
 } = require('./liquidity');
 const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
 const consts = require('./constants');
@@ -34,8 +34,8 @@ api.tickPrice = tickPrice;
 api.sqrtPrice = sqrtPrice;
 
 // Liquidity Functions
-api.getAmountsForLiquidityFormatted = getAmountsForLiquidityFormatted;
-api.getAmountsForLiquidity = getAmountsForLiquidity;
+api.getAmountsForCurrentLiquidity = getAmountsForCurrentLiquidity;
+api.getAmountsForLiquidityRange = getAmountsForLiquidityRange;
 
 api.tickMath = {
   getSqrtRatioAtTick,

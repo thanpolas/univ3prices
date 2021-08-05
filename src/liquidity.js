@@ -24,7 +24,7 @@ const entity = (module.exports = {});
  * @param {number=} tickStep How many tick steps wide to capture liquidity.
  * @return {Array<string>} A tuple with the reserves of token0 and token1.
  */
-entity.getAmountsForLiquidityFormatted = (
+entity.getAmountsForCurrentLiquidity = (
   dec0,
   dec1,
   liquidityStr,
@@ -44,7 +44,7 @@ entity.getAmountsForLiquidityFormatted = (
   const sqrtA = getSqrtRatioAtTick(tickLow);
   const sqrtB = getSqrtRatioAtTick(tickHigh);
 
-  const reserves = entity.getAmountsForLiquidity(
+  const reserves = entity.getAmountsForLiquidityRange(
     sqrtPrice,
     sqrtA,
     sqrtB,
@@ -70,7 +70,7 @@ entity.getAmountsForLiquidityFormatted = (
  * @param {JSBI|string} liquidityStr The liquidity being valued.
  * @return {Array<string>} A tuple with the reserves of token0 and token1.
  */
-entity.getAmountsForLiquidity = (
+entity.getAmountsForLiquidityRange = (
   sqrtRatioX96,
   sqrtRatioAX96,
   sqrtRatioBX96,
