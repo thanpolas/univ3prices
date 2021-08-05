@@ -21,6 +21,7 @@ const entity = (module.exports = {});
  * @param {string} liquidityStr The liquidity value.
  * @param {string} sqrtPriceStr The sqrt price value.
  * @param {string} tickSpacing The spacing between the ticks.
+ * @param {number=} tickStep How many tick steps wide to capture liquidity.
  * @return {Array<string>} A tuple with the reserves of token0 and token1.
  */
 entity.getAmountsForLiquidityFormatted = (
@@ -29,6 +30,7 @@ entity.getAmountsForLiquidityFormatted = (
   liquidityStr,
   sqrtPriceStr,
   tickSpacing,
+  tickStep = 0,
 ) => {
   const tok0Dec = expDecs(dec0);
   const tok1Dec = expDecs(dec1);
@@ -37,7 +39,7 @@ entity.getAmountsForLiquidityFormatted = (
   const liquidity = JSBI.BigInt(liquidityStr);
   const tick = getTickAtSqrtRatio(sqrtPrice);
 
-  const [tickLow, tickHigh] = tickRange(tick, tickSpacing);
+  const [tickLow, tickHigh] = tickRange(tick, tickSpacing, tickStep);
 
   const sqrtA = getSqrtRatioAtTick(tickLow);
   const sqrtB = getSqrtRatioAtTick(tickHigh);

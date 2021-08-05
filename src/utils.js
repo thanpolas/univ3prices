@@ -55,14 +55,19 @@ utils.sqrt = (value) => {
  *
  * @param {string} tickStr The tick value.
  * @param {string} tickSpacingStr The tick spacing value.
+ * @param {number=} tickStep How many tick steps wide to capture liquidity.
  * @return {Array<number>} a tuple of the lower and highest tick local range.
  */
-utils.tickRange = (tickStr, tickSpacingStr) => {
+utils.tickRange = (tickStr, tickSpacingStr, tickStep = 0) => {
   const tick = Number(tickStr);
   const tickSpacing = Number(tickSpacingStr);
 
-  const tickLow = Math.floor(tick / tickSpacing) * tickSpacing;
-  const tickHigh = tickLow + tickSpacing;
+  const tickSpacingStepped = tickSpacing * tickStep;
+
+  const tickLow =
+    Math.floor(tick / tickSpacing) * tickSpacing - tickSpacingStepped;
+  const tickHigh = tickLow + tickSpacing + tickSpacingStepped;
+
   return [tickLow, tickHigh];
 };
 
