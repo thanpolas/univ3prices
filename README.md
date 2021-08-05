@@ -1,9 +1,19 @@
 # UniV3Prices
 
-> A Node.js library to calculate [Uniswap V3][univ3] ratios (prices) from token pairs.
+> A Node.js library to calculate [Uniswap V3][univ3] ratios (prices) and liquidity (reserves).
 
 [![NPM Version][npm-image]][npm-url]
 [![CircleCI][circle-image]][circle-url]
+
+## Features
+
+This library will allow you to:
+
+-   [Calculate price based on the sqrtPrice Value][sqrtprice].
+-   [Calculate price based on the current tick Value][tickprice].
+-   [Calculate amounts of tokens (reserves) for the current tick of a pool][reserves].
+-   [Provide utility functions to work with Uniswap V3][utilities].
+-   [Various constants to work with Uniswap V3][constants].
 
 ## Install
 
@@ -21,23 +31,28 @@ const univ3prices = require('@thanpolas/univ3prices');
 const price = univ3prices(
     USDC.decimals,
     USDT.decimals,
-    sqrtRatioX96,
+    sqrtPrice,
 ).toSignificant(5);
 
 console.log(prices);
 // "1.01"
 ```
 
-## univ3prices(decimals0, decimals1, sqrtRatioX96, optReverse)
+## sqrtPrice(decimals0, decimals1, sqrtRatioX96, optReverse)
 
 > The default function; calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs.
 
 -   `decimals0` **{number}** The decimals of token 0.
 -   `decimals1` **{number}** The decimals of token 1.
--   `sqrtRatioX96` **{string}** The Square Root ratio value of the LP.
+-   `sqrtPrice` **{string}** The Square Root price value of the LP.
 -   `optReverse` **{boolean=}** Optionally, set to true, to get the reversed price (i.e. token1 / token0).
 
-The `univ3prices()` returns an object that contains three functions depending on the output type you wish to have:
+ℹ️ :: This is the default function available by directly requiring the library (`const uniV3Prices = require('univ3prices')`)
+or as a property (`const { sqrtPrice } = require('univ3prices')`).
+
+ℹ️ :: See the [How to Get the sqrtPrice and Tick values][get-sqrt-tick-values] for a guide on how to get those values.
+
+The `sqrtPrice()` returns an object that contains three functions depending on the output type you wish to have:
 
 ### toSignificant(digits, optFormat, optRounding)
 
@@ -57,39 +72,39 @@ The `univ3prices()` returns an object that contains three functions depending on
 #### toSignificant Examples - Defaults
 
 ```js
-// prepare a sqrtRatioX96 value, by emulating a 10 / 7 division.
-const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+// prepare a sqrtPrice value, by emulating a 10 / 7 division.
+const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
 
-univ3Price(18, 18, sqrtRatioX96).toSignificant();
+univ3Price(18, 18, sqrtPrice).toSignificant();
 // '1.4286'
 
-univ3Price(18, 18, sqrtRatioX96).toSignificant(3);
+univ3Price(18, 18, sqrtPrice).toSignificant(3);
 // '1.43'
 
-univ3Price(18, 18, sqrtRatioX96).toSignificant(2);
+univ3Price(18, 18, sqrtPrice).toSignificant(2);
 // '1.4'
 ```
 
 #### toSignificant Examples - Format and Round
 
 ```js
-// prepare a sqrtRatioX96 value, by emulating a 10 / 7 division.
-const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
-// and a sqrtRatioX96 value emulating 20000000 / 1 division.
-const sqrtRatioX96_20m = encodeSqrtRatioX96(20000000e18, 1e18);
+// prepare a sqrtPrice value, by emulating a 10 / 7 division.
+const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
+// and a sqrtPrice value emulating 20000000 / 1 division.
+const sqrtPrice_20m = encodeSqrtRatioX96(20000000e18, 1e18);
 
 // Default Formatting
 const formatDef = { groupSeparator: '' };
 // Use `,` as group separator
 const formatComma = { groupSeparator: ',' };
 
-univ3Price(18, 18, sqrtRatioX96).toSignificant(5, formatDef, ROUND_DOWN);
+univ3Price(18, 18, sqrtPrice).toSignificant(5, formatDef, ROUND_DOWN);
 // '1.4285'
-univ3Price(18, 18, sqrtRatioX96).toSignificant(3, formatDef, ROUND_DOWN);
+univ3Price(18, 18, sqrtPrice).toSignificant(3, formatDef, ROUND_DOWN);
 // '1.42'
 
 //  Formatting
-univ3Price(18, 18, sqrtRatioX96_20m).toSignificant(5, formatComma);
+univ3Price(18, 18, sqrtPrice_20m).toSignificant(5, formatComma);
 // '20,000,000'
 ```
 
@@ -107,45 +122,45 @@ Formatting and Rounding are exactly the same as for [the `toSignificant()` metho
 #### toFixed Examples
 
 ```js
-// prepare a sqrtRatioX96 value, by emulating a 10 / 7 division.
-const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
-// and a sqrtRatioX96 value emulating 20000000 / 1 division.
-const sqrtRatioX96_20m = encodeSqrtRatioX96(10e18, 7e18);
+// prepare a sqrtPrice value, by emulating a 10 / 7 division.
+const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
+// and a sqrtPrice value emulating 20000000 / 1 division.
+const sqrtPrice_20m = encodeSqrtRatioX96(10e18, 7e18);
 
-univ3Price(18, 18, sqrtRatioX96).toFixed();
+univ3Price(18, 18, sqrtPrice).toFixed();
 // '1.42857'
 
-univ3Price(18, 18, sqrtRatioX96).toFixed(3);
+univ3Price(18, 18, sqrtPrice).toFixed(3);
 // '1.429'
 
-univ3Price(18, 18, sqrtRatioX96).toFixed(2);
+univ3Price(18, 18, sqrtPrice).toFixed(2);
 // '1.43'
 
 // This time use the 20m ratio
-univ3Price(18, 18, sqrtRatioX96_20m).toFixed(2);
+univ3Price(18, 18, sqrtPrice_20m).toFixed(2);
 // '20000000.00'
 ```
 
-### toScalar()
+### toFraction()
 
-> Returns the raw scalar object, contains the numerator and denominator in [BigInt type][jsbi] of the token pairs.
+Returns the raw fraction tuple Array; contains the numerator and denominator in [BigInt type][jsbi] of the token pairs.
 
-#### toScalar Examples
+#### toFraction() Examples
 
 ```js
 const JSBI = require('jsbi');
-// prepare a sqrtRatioX96 value, by emulating a 10 / 7 division.
-const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+// prepare a sqrtPrice value, by emulating a 10 / 7 division.
+const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
 
-const scalar = univ3Price(18, 18, sqrtRatioX96).toScalar();
-// {
-//     numerator: '...'
-//     denominator: '...'
-// }
+const fraction = univ3Price(18, 18, sqrtPrice).toFraction();
 
-scalar.numerator instanceOf JSBI; // true
-scalar.denominator instanceOf JSBI; // true
+const [numerator, denominator] = fraction;
+
+numerator instanceOf JSBI; // true
+denominator instanceOf JSBI; // true
 ```
+
+---
 
 ## univ3prices.tickPrice(decimals0, decimals1, tick, optReverse)
 
@@ -156,17 +171,109 @@ scalar.denominator instanceOf JSBI; // true
 -   `tick` **{string}** The current tick value.
 -   `optReverse` **{boolean=}** Optionally, set to true, to get the reversed price (i.e. token1 / token0).
 
+ℹ️ :: See the [How to Get the sqrtPrice and Tick values][get-sqrt-tick-values] for a guide on how to get those values.
+
 The `univ3prices.tickPrice()` returns an object that contains three functions depending on the output type you wish to have, and has the exact same functions as the default function:
 
 -   [toSignificant()][tosignificant].
 -   [toFixed()][tofixed].
--   [toScalar()][toscalar].
+-   [toFraction()][tofraction].
 
 ---
 
-## How to get the sqrtRatioX96 and tick Values From Uniswap
+## univ3prices.getAmountsForCurrentLiquidity(decimals0, decimals1, liquidity, sqrtPrice, tickSpacing, optTickStep)
 
-In regards to the `sqrtRatioX96` and `tick` values. there are two primary ways to get it:
+> Calculates the reserves for the current sqrt price value.
+
+-   `decimals0` **{number}** The decimals of token 0.
+-   `decimals1` **{number}** The decimals of token 1.
+-   `sqrtPrice` **{string}** The Square Root price value of the LP.
+-   `tickSpacing` **{string}** The tick spacing value of the LP.
+-   `tickStep` **{number=}** Optionally, set how many tick steps of liquidity range should be calculated (default: 0).
+-   **Returns** **{Array<string>}** A tuple array containing the amount of each token in the defined liquidity range.
+
+ℹ️ :: This function is a wrapper to `getAmountsForLiquidity()`, will automatically calculate the liquidity range expressed as `sqrtRatioAX96` and `sqrtRatioBX96`.
+
+### Examples for univ3prices.getAmountsForCurrentLiquidity
+
+Standard example:
+
+```js
+// Get the reserves for the DAI/WETH Liquidity Pool.
+const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+    '18', // decimals of DAI
+    '18', // decimals of WETH
+    '2830981547246997099758055', // Current liquidity value of the pool
+    '1550724133884968571999296281', // Current sqrt price value of the pool
+    '60', // the tickSpacing value from the pool
+);
+
+// The total amount of DAI available in this liquidity range
+expect(token0Reserves).toEqual('116596.9');
+// The total amount of WETH available in this liquidity range
+expect(token1Reserves).toEqual('121.4');
+});
+```
+
+Widening the liquidity range by having a step of 5:
+
+```js
+// Get the reserves for the DAI/WETH Liquidity Pool.
+const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+    '18', // decimals of DAI
+    '18', // decimals of WETH
+    '2830981547246997099758055', // Current liquidity value of the pool
+    '1550724133884968571999296281', // Current sqrt price value of the pool
+    '60', // the tickSpacing value from the pool
+    5 // Choose 5 steps of tickSpacing (60 * 5) for low and high tick values.
+);
+
+// The total amount of DAI available in this liquidity range
+expect(token0Reserves).toEqual('116596.9');
+// The total amount of WETH available in this liquidity range
+expect(token1Reserves).toEqual('944.5');
+});
+```
+
+### Where to Find The Values for the Liquidity Function
+
+Query directly the [Liquidity Pool contract you care about (i.e. this is the DAI/WETH pool)][dai-weth-pool] and call the functions:
+
+-   `slot0()` To get a list of values including the `sqrtPriceX96`.
+-   `liquidity()` To get the liquidity value.
+-   `tickSpacing()` To get the tick spacing value.
+
+---
+
+## univ3prices.getAmountsForLiquidityRange(sqrtPrice, sqrtPriceA, sqrtPriceB, liquidity)
+
+> Calculates the reserves for a range of sqrt price.
+
+-   `sqrtPrice` **{string}** The Square Root price value of the LP.
+-   `sqrtPriceA` **{string}** The Square Root price representing the low tick boundary.
+-   `sqrtPriceB` **{string}** The Square Root price representing the high tick boundary.
+-   `liquidity` **{string}** The liquidity value.
+-   **Returns** **{Array<string>}** A tuple array containing the amount of each token in the defined liquidity range.
+
+### Examples for univ3prices.getAmountsForLiquidityRange
+
+```js
+const [amount0, amount1] = getAmountsForLiquidityRange(
+    encodePriceSqrt(1, 1), // generate sqrt price for range
+    encodePriceSqrt(100, 110),
+    encodePriceSqrt(110, 100),
+    2148,
+);
+
+expect(Number(amount0)).toEqual(99); // Amount of token0
+expect(Number(amount1)).toEqual(99); // Amount of token1
+```
+
+---
+
+## How to get the sqrtPrice and tick Values From Uniswap
+
+In regards to the `sqrtPrice` and `tick` values. there are two primary ways to get it:
 
 ### Using the Liquidity Pool Contract
 
@@ -230,7 +337,7 @@ When a new node version should be supported, updated the following:
 ## Release History
 
 -   **v2.0.0**, _05 Aug 2021_
-    -   Implemented the liquidity calculation functions `getAmountsForLiquidityFormatted()` and `getAmountsForLiquidity()`.
+    -   Implemented the liquidity calculation functions `getAmountsForCurrentLiquidity()` and `getAmountsForLiquidity()`.
     -   Implemented Tick Math functions at `tickMath.getSqrtRatioAtTick()` and `tickMath.getTickAtSqrtRatio`.
     -   Added `sqrtPrice` function on the API (same as the default export).
     -   New constant values added (`ZERO`, `ONE`, `TWO`, `MaxUint256`, `MIN_TICK`, `MAX_TICK`, `MIN_SQRT_RATIO`, `MAX_SQRT_RATIO`).
@@ -254,9 +361,7 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [univ3graph]: https://thegraph.com/legacy-explorer/subgraph/uniswap/uniswap-v3
 [slot0]: https://github.com/Uniswap/uniswap-v3-core/blob/b2c5555d696428c40c4b236069b3528b2317f3c1/contracts/interfaces/pool/IUniswapV3PoolState.sol#L21-L32
 [toformat]: https://github.com/MikeMcl/toFormat#further-examples
-[tosignificant]: #tosignificantdigits-optformat-optrounding
 [jsbi]: https://github.com/GoogleChromeLabs/jsbi#readme
-[rounding]: #rounding-values
 [uni-pool]: https://github1s.com/Uniswap/uniswap-v3-sdk/blob/aeb1b09/src/entities/pool.ts#L96-L122
 [uni-price]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/price.ts
 [uni-fraction]: https://github1s.com/Uniswap/uniswap-sdk-core/blob/HEAD/src/entities/fractions/fraction.ts
@@ -265,6 +370,16 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [circle-url]: https://circleci.com/gh/thanpolas/univ3prices/tree/main
 [circle-image]: https://circleci.com/gh/thanpolas/univ3prices/tree/main.svg?style=svg
 [jorropo]: https://github.com/Jorropo
+[dai-weth-pool]: https://etherscan.io/address/0x60594a405d53811d3bc4766596efd80fd545a270
+[tosignificant]: #tosignificantdigits-optformat-optrounding
+[rounding]: #rounding-values
 [tosignificant]: #tosignificantdigits-optformat-optrounding
 [tofixed]: #tofixeddigits-optformat-optrounding
-[toscalar]: #toscalar
+[tofraction]: #tofraction
+[get-sqrt-tick-values]: #how-to-get-the-sqrtPrice-and-tick-values-from-uniswap
+[sqrtprice]: #sqrtpricedecimals0-decimals1-sqrtPrice-optreverse
+[tickprice]: #univ3pricestickpricedecimals0-decimals1-tick-optreverse
+
+-   [Calculate amounts of tokens (reserves) for the current tick of a pool][reserves].
+-   [Provide utility functions to work with Uniswap V3][utilities].
+-   [Various constants to work with Uniswap V3][constants].
