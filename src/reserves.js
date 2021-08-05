@@ -13,7 +13,8 @@ const { toFixed } = require('./formatting');
 const entity = (module.exports = {});
 
 /**
- * Calculates the reserves of tokens based on the current tick value.
+ * Calculates the reserves of tokens based on the current tick value and formats
+ * appropriately given the decimals of each token.
  *
  * @param {string} dec0 Decimals of first token.
  * @param {string} dec1 Decimals of second token.
@@ -22,7 +23,13 @@ const entity = (module.exports = {});
  * @param {string} tickSpacing The spacing between the ticks.
  * @return {Array<string>} A tuple with the reserves of token0 and token1.
  */
-entity.reserves = (dec0, dec1, liquidityStr, sqrtPriceStr, tickSpacing) => {
+entity.getAmountsForLiquidityFormatted = (
+  dec0,
+  dec1,
+  liquidityStr,
+  sqrtPriceStr,
+  tickSpacing,
+) => {
   const tok0Dec = expDecs(dec0);
   const tok1Dec = expDecs(dec1);
 
