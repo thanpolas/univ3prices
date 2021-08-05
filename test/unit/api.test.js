@@ -58,11 +58,11 @@ describe('API Surface Tests', () => {
     it('tickPrice is a function', () => {
       expect(univ3Prices.tickPrice).toBeFunction();
     });
-    it('getAmountsForLiquidityFormatted is a function', () => {
-      expect(univ3Prices.getAmountsForLiquidityFormatted).toBeFunction();
+    it('getAmountsForCurrentLiquidity is a function', () => {
+      expect(univ3Prices.getAmountsForCurrentLiquidity).toBeFunction();
     });
-    it('getAmountsForLiquidity is a function', () => {
-      expect(univ3Prices.getAmountsForLiquidity).toBeFunction();
+    it('getAmountsForLiquidityRange is a function', () => {
+      expect(univ3Prices.getAmountsForLiquidityRange).toBeFunction();
     });
 
     it('tickMath.getSqrtRatioAtTick is a function', () => {
