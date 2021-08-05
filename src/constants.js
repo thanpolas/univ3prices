@@ -23,3 +23,23 @@ consts.Q192 = JSBI.exponentiate(consts.Q96, JSBI.BigInt(2));
 consts.MaxUint256 = JSBI.BigInt(
   '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
 );
+
+/**
+ * The minimum tick that can be used on any pool.
+ */
+consts.MIN_TICK = -887272;
+/**
+ * The maximum tick that can be used on any pool.
+ */
+consts.MAX_TICK = -consts.MIN_TICK;
+
+/**
+ * The sqrt ratio corresponding to the minimum tick that could be used on any pool.
+ */
+consts.MIN_SQRT_RATIO = JSBI.BigInt('4295128739');
+/**
+ * The sqrt ratio corresponding to the maximum tick that could be used on any pool.
+ */
+consts.MAX_SQRT_RATIO = JSBI.BigInt(
+  '1461446703485210103287273052203988822378723970342',
+);

@@ -6,7 +6,17 @@
 const invariant = require('invariant');
 const JSBI = require('jsbi');
 
-const { Q32, ZERO, ONE, TWO, MaxUint256 } = require('./constants');
+const {
+  Q32,
+  ZERO,
+  ONE,
+  TWO,
+  MaxUint256,
+  MIN_TICK,
+  MAX_TICK,
+  MIN_SQRT_RATIO,
+  MAX_SQRT_RATIO,
+} = require('./constants');
 
 const entity = (module.exports = {});
 
@@ -14,26 +24,6 @@ entity.POWERS_OF_2 = [128, 64, 32, 16, 8, 4, 2, 1].map((pow) => [
   pow,
   JSBI.exponentiate(TWO, JSBI.BigInt(pow)),
 ]);
-
-/**
- * The minimum tick that can be used on any pool.
- */
-entity.MIN_TICK = -887272;
-/**
- * The maximum tick that can be used on any pool.
- */
-entity.MAX_TICK = -entity.MIN_TICK;
-
-/**
- * The sqrt ratio corresponding to the minimum tick that could be used on any pool.
- */
-entity.MIN_SQRT_RATIO = JSBI.BigInt('4295128739');
-/**
- * The sqrt ratio corresponding to the maximum tick that could be used on any pool.
- */
-entity.MAX_SQRT_RATIO = JSBI.BigInt(
-  '1461446703485210103287273052203988822378723970342',
-);
 
 /**
  * Multiplies and right shifts.
@@ -58,9 +48,7 @@ function mulShift(val, mulBy) {
  */
 entity.getSqrtRatioAtTick = (tick) => {
   invariant(
-    tick >= entity.MIN_TICK &&
-      tick <= entity.MAX_TICK &&
-      Number.isInteger(tick),
+    tick >= MIN_TICK && tick <= MAX_TICK && Number.isInteger(tick),
     'TICK',
   );
   const absTick = tick < 0 ? tick * -1 : tick;
@@ -151,8 +139,8 @@ entity.getSqrtRatioAtTick = (tick) => {
 entity.getTickAtSqrtRatio = (sqrtRatioX96) => {
   const sqrtRatio = JSBI.BigInt(sqrtRatioX96);
   invariant(
-    JSBI.greaterThanOrEqual(sqrtRatio, entity.MIN_SQRT_RATIO) &&
-      JSBI.lessThan(sqrtRatio, entity.MAX_SQRT_RATIO),
+    JSBI.greaterThanOrEqual(sqrtRatio, MIN_SQRT_RATIO) &&
+      JSBI.lessThan(sqrtRatio, MAX_SQRT_RATIO),
     'SQRT_RATIO',
   );
 
