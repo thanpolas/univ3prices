@@ -65,9 +65,9 @@ The `sqrtPrice()` returns an object that contains three functions depending on t
 
 #### Rounding Values
 
--   `univ3prices.Rounding.ROUND_DOWN` Rounds towards zero. I.e. truncate, no rounding.
--   `univ3prices.Rounding.ROUND_HALF_UP`: Rounds towards nearest neighbour. If equidistant, rounds away from zero.
--   `univ3prices.Rounding.ROUND_UP`: Rounds away from zero.
+-   `univ3prices.constants.Rounding.ROUND_DOWN` Rounds towards zero. I.e. truncate, no rounding.
+-   `univ3prices.constants.Rounding.ROUND_HALF_UP`: Rounds towards nearest neighbour. If equidistant, rounds away from zero.
+-   `univ3prices.constants.Rounding.ROUND_UP`: Rounds away from zero.
 
 #### toSignificant Examples - Defaults
 
@@ -159,6 +159,24 @@ const [numerator, denominator] = fraction;
 numerator instanceOf JSBI; // true
 denominator instanceOf JSBI; // true
 ```
+
+---
+
+## How to get the sqrtPrice and tick Values From Uniswap
+
+In regards to the `sqrtPrice` and `tick` values. there are two primary ways to get it:
+
+### Using the Liquidity Pool Contract
+
+Query the Liquidity Pool contract of interest and [use the `slot0()` method][slot0].
+
+This method will return a collection of properties, the ones you care about is
+`sqrtPriceX96` or `tick`.
+
+### Using the Subgraph
+
+Use the [Uniswap V3 Subgraph][univ3graph] that is publicly available and fetch
+the `sqrtPrice` or `tick` property from the `Pool` schema.
 
 ---
 
@@ -271,31 +289,56 @@ expect(Number(amount1)).toEqual(99); // Amount of token1
 
 ---
 
-## How to get the sqrtPrice and tick Values From Uniswap
+## Tick Math Functions
 
-In regards to the `sqrtPrice` and `tick` values. there are two primary ways to get it:
+### univ3prices.tickMath.getSqrtRatioAtTick(tick)
 
-### Using the Liquidity Pool Contract
+> Calculates the sqrt ratio at the given tick.
 
-Query the Liquidity Pool contract of interest and [use the `slot0()` method][slot0].
+-   `tick` **{string}** The tick value to calculate the sqrt ratio for.
+-   **Returns** **{string}** The sqrt ratio.
 
-This method will return a collection of properties, the ones you care about is
-`sqrtPriceX96` or `tick`.
+### univ3prices.tickMath.getTickAtSqrtRatio(sqrtPrice)
 
-### Using the Subgraph
+> Calculates the tick at the given sqrt ratio.
 
-Use the [Uniswap V3 Subgraph][univ3graph] that is publicly available and fetch
-the `sqrtPrice` or `tick` property from the `Pool` schema.
+-   `sqrtPrice` **{string}** The sqrt price to calculate the tick for.
+-   **Returns** **{string}** The tick.
 
-## Utility Functions and Constants
+---
 
-The univ3prices package offers a few utility functions and constants:
+## Utility Functions
 
--   `univ3prices.encodeSqrtRatioX96(amount1, amount0)` Returns the sqrt ratio as a Q64.96 corresponding to a given ratio of amount1 and amount0.
--   `univ3prices.sqrt(value)` Computes floor(sqrt(value:JSBI)).
--   `univ3prices.Rounding` The [Rounding enumeration as mentioned above][rounding].
--   `univ3prices.Q96` Q96 number constant.
--   `univ3prices.Q192` Q192 number constant.
+The following utility functions are available in the `univ3prices.utils` path:
+
+-   `encodeSqrtRatioX96(amount0, amount1)` Convert a value pair to sqrt price.
+-   `sqrt(value)` Computes the floor(sqrt(value)).
+-   `tickRange(tick, tickSpacing, optTickStep)` Will calculate the low and high tick ranges for a given tick, optionally multiplying the spacing with the step for a wider range.
+-   `expDecs(decimals)` Will return the exponent of the given decimals number.
+-   `biConv(value)` Will safely convert any value to JSBI and not touch values that are of JSBI type.
+
+---
+
+## Constants
+
+The following constants are available in the `univ3prices.constants` path:
+
+-   `RESOLUTION` :: Fixed point resolution of `96` as a bigint.
+-   `NEGATIVE_ONE` :: `-1` as a bigint.
+-   `ZERO` :: `0` as a bigint.
+-   `ONE` :: `1` as a bigint.
+-   `TWO` :: `2` as a bigint.
+-   `Q32` :: Power of 2 at `32`.
+-   `Q96` :: Power of 2 at `96`.
+-   `Q192` :: Power of 2 at `192`.
+-   `MaxUint256` :: Maximum signed integer value.
+-   `MIN_TICK` :: Minimum tick value.
+-   `MAX_TICK` :: Maximum tick value.
+-   `MIN_SQRT_RATIO` :: Minimum sqrt price (ratio) value.
+-   `MAX_SQRT_RATIO` :: Maximum sqrt price (ratio) value.
+-   `Rounding` :: The [Rounding enumeration as mentioned above][rounding].
+
+---
 
 # Acknowledgements & Credits
 
