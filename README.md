@@ -384,7 +384,7 @@ When a new node version should be supported, updated the following:
 ## Release History
 
 -   **v2.0.0**, _05 Aug 2021_
-    -   Implemented the liquidity calculation functions `getAmountsForCurrentLiquidity()` and `getAmountsForLiquidity()`.
+    -   Implemented the liquidity calculation functions `getAmountsForCurrentLiquidity()` and `getAmountsForLiquidityRange()`.
     -   Implemented Tick Math functions at `tickMath.getSqrtRatioAtTick()` and `tickMath.getTickAtSqrtRatio`.
     -   Added `sqrtPrice` function on the API (same as the default export).
     -   New constant values added (`ZERO`, `ONE`, `TWO`, `MaxUint256`, `MIN_TICK`, `MAX_TICK`, `MIN_SQRT_RATIO`, `MAX_SQRT_RATIO`).
@@ -392,7 +392,7 @@ When a new node version should be supported, updated the following:
     -   **Breaking** Moved utility functions (`encodeSqrtRatioX96()` and `sqrt()`) into the `utils` namespace.
     -   **Breaking** Moved constants (`Rounding`, `Q96` and `Q192`) into the `constants` namespace.
     -   **Breaking** Renamed output function `.toScalar()` to `.toFraction()`.
-    -   Internal change of `toFixed()` and `toSignificant()` to accept a tuple Array isntead of an Object.
+    -   Internal change of `toFixed()` and `toSignificant()` to accept a tuple Array instead of an Object.
 -   **v1.1.0**, _31 Jul 2021_
     -   Added `tickPrice()` function to calculate price based on current tick value.
     -   Refactored the default price calculation function with better variable names.
