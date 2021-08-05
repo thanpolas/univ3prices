@@ -7,11 +7,8 @@ const invariant = require('invariant');
 const toFormat = require('toformat');
 const Decimal = require('decimal.js');
 
-const {
-  Rounding,
-  toSignificantRounding,
-  toFixedRounding,
-} = require('./rounding');
+const { toSignificantRounding, toFixedRounding } = require('./rounding');
+const { Rounding } = require('./constants');
 
 const DecimalFormat = toFormat(Decimal);
 const BigFormat = toFormat(Big);

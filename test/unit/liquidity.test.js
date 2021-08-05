@@ -4,7 +4,7 @@
 
 const univ3Price = require('../..');
 
-const { encodeSqrtRatioX96: encodePriceSqrt } = univ3Price;
+const { encodeSqrtRatioX96: encodePriceSqrt } = univ3Price.utils;
 
 const { getAmountsForLiquidityFormatted, getAmountsForLiquidity } = univ3Price;
 

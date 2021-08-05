@@ -33,10 +33,10 @@ entity.tickPrice = (
 
   const numerator = 1.0001 ** absTick;
 
-  const fraction = {
-    numerator: optReverse ? denominator : numerator,
-    denominator: optReverse ? numerator : denominator,
-  };
+  const fraction = [
+    optReverse ? denominator : numerator,
+    optReverse ? numerator : denominator,
+  ];
 
   const chainCtx = chainContext(fraction);
 

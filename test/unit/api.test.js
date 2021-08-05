@@ -20,7 +20,7 @@ describe('API Surface Tests', () => {
       ]);
     });
     it('Exposes only the expected properties for constants', () => {
-      expect(univ3Prices.consts).toContainAllKeys([
+      expect(univ3Prices.constants).toContainAllKeys([
         'RESOLUTION',
         'NEGATIVE_ONE',
         'ZERO',
@@ -41,7 +41,6 @@ describe('API Surface Tests', () => {
       expect(univ3Prices.utils).toContainAllKeys([
         'encodeSqrtRatioX96',
         'sqrt',
-        'Rounding',
         'tickRange',
         'expDecs',
         'biConv',
@@ -79,9 +78,6 @@ describe('API Surface Tests', () => {
     it('utils.sqrt is a function', () => {
       expect(univ3Prices.utils.sqrt).toBeFunction();
     });
-    it('utils.Rouding is a function', () => {
-      expect(univ3Prices.utils.Rouding).toBeFunction();
-    });
     it('utils.tickRange is a function', () => {
       expect(univ3Prices.utils.tickRange).toBeFunction();
     });
@@ -95,9 +91,9 @@ describe('API Surface Tests', () => {
 
   describe('Check Values', () => {
     it('Rounding Enum has expected values', () => {
-      expect(univ3Prices.consts.Rounding.ROUND_DOWN).toEqual(0);
-      expect(univ3Prices.consts.Rounding.ROUND_HALF_UP).toEqual(1);
-      expect(univ3Prices.consts.Rounding.ROUND_UP).toEqual(2);
+      expect(univ3Prices.constants.Rounding.ROUND_DOWN).toEqual(0);
+      expect(univ3Prices.constants.Rounding.ROUND_HALF_UP).toEqual(1);
+      expect(univ3Prices.constants.Rounding.ROUND_UP).toEqual(2);
     });
   });
 });

@@ -3,7 +3,8 @@ const sqrtPrice = require('../..');
 const subfix = require('../fixtures/subgraph-results.fix');
 
 const { eth_usdt: ethusdtfix, susd_usdc: susdfix } = subfix;
-const { encodeSqrtRatioX96, Rounding } = sqrtPrice;
+const { encodeSqrtRatioX96 } = sqrtPrice.utils;
+const { Rounding } = sqrtPrice.constants;
 
 describe('Uniswap V3 sqrt price', () => {
   describe('toSignificant', () => {
