@@ -43,3 +43,12 @@ consts.MIN_SQRT_RATIO = JSBI.BigInt('4295128739');
 consts.MAX_SQRT_RATIO = JSBI.BigInt(
   '1461446703485210103287273052203988822378723970342',
 );
+
+/**
+ * @enum {number} Normalized rounding for this package.
+ */
+consts.Rounding = {
+  ROUND_DOWN: 0,
+  ROUND_HALF_UP: 1,
+  ROUND_UP: 2,
+};

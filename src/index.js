@@ -20,7 +20,6 @@ const {
   biConv,
   expDecs,
 } = require('./utils');
-const { Rounding } = require('./rounding');
 const { tickPrice } = require('./tick-price');
 const {
   getAmountsForLiquidityFormatted,
@@ -43,12 +42,11 @@ api.tickMath = {
   getTickAtSqrtRatio,
 };
 
-api.consts = consts;
+api.constants = consts;
 
 api.utils = {
   encodeSqrtRatioX96,
   sqrt,
-  Rounding,
   tickRange,
   expDecs,
   biConv,
