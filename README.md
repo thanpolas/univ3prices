@@ -12,6 +12,7 @@ This library will allow you to:
 -   [Calculate price based on the sqrtPrice Value][sqrtprice].
 -   [Calculate price based on the current tick Value][tickprice].
 -   [Calculate amounts of tokens (reserves) for the current tick of a pool][reserves].
+-   [Tick Math functions for converting tick to sqrt and vice versa][tick-math].
 -   [Provide utility functions to work with Uniswap V3][utilities].
 -   [Various constants to work with Uniswap V3][constants].
 
@@ -424,9 +425,9 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [tofixed]: #tofixeddigits-optformat-optrounding
 [tofraction]: #tofraction
 [get-sqrt-tick-values]: #how-to-get-the-sqrtPrice-and-tick-values-from-uniswap
-[sqrtprice]: #sqrtpricedecimals0-decimals1-sqrtPrice-optreverse
+[sqrtprice]: #sqrtpricedecimals0-decimals1-sqrtratiox96-optreverse
 [tickprice]: #univ3pricestickpricedecimals0-decimals1-tick-optreverse
-
--   [Calculate amounts of tokens (reserves) for the current tick of a pool][reserves].
--   [Provide utility functions to work with Uniswap V3][utilities].
--   [Various constants to work with Uniswap V3][constants].
+[reserves]: #univ3pricesgetamountsforcurrentliquiditydecimals0-decimals1-liquidity-sqrtprice-tickspacing-opttickstep
+[tick-math]: #tick-math-functions
+[utilities]: #utility-functions
+[constants]: #constants
