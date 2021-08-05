@@ -54,23 +54,10 @@ entity.getAmountsForLiquidity = (
   sqrtRatioBX96,
   liquidityStr,
 ) => {
-  let sqrtRatio = sqrtRatioX96;
-  let sqrtRatioA = sqrtRatioAX96;
-  let sqrtRatioB = sqrtRatioBX96;
-  let liquidity = liquidityStr;
-
-  if (typeof sqrtRatio !== 'bigint') {
-    sqrtRatio = JSBI.BigInt(sqrtRatioX96);
-  }
-  if (typeof sqrtRatioA !== 'bigint') {
-    sqrtRatioA = JSBI.BigInt(sqrtRatioAX96);
-  }
-  if (typeof sqrtRatioB !== 'bigint') {
-    sqrtRatioB = JSBI.BigInt(sqrtRatioBX96);
-  }
-  if (typeof liquidity !== 'bigint') {
-    liquidity = JSBI.BigInt(liquidityStr);
-  }
+  const sqrtRatio = biConv(sqrtRatioX96);
+  let sqrtRatioA = biConv(sqrtRatioAX96);
+  let sqrtRatioB = biConv(sqrtRatioBX96);
+  const liquidity = biConv(liquidityStr);
 
   if (JSBI.greaterThan(sqrtRatioA, sqrtRatioB)) {
     sqrtRatioA = sqrtRatioB;
