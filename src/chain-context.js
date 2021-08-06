@@ -15,6 +15,6 @@ module.exports = function chainContext(fraction) {
   return {
     toFixed: toFixed.bind(null, fraction),
     toSignificant: toSignificant.bind(null, fraction),
-    toScalar: () => fraction,
+    toFraction: () => fraction,
   };
 };

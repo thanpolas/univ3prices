@@ -1,5 +1,9 @@
 const JSBI = require('jsbi');
-const { Q96, encodeSqrtRatioX96, sqrt } = require('../..');
+
+const univ3Prices = require('../..');
+
+const { encodeSqrtRatioX96, sqrt } = univ3Prices.utils;
+const { Q96 } = univ3Prices.constants;
 
 const MaxUint256 = JSBI.BigInt(
   '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
