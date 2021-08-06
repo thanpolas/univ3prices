@@ -34,10 +34,10 @@ entity.sqrtPrice = (
   const inputDenominator = Q192;
 
   const adjustedForDecimalsNumerator = JSBI.BigInt(
-    JSBI.multiply(scalarNumerator, inputNumerator),
+    JSBI.multiply(scalarDenominator, inputDenominator),
   );
   const adjustedForDecimalsDenominator = JSBI.BigInt(
-    JSBI.multiply(scalarDenominator, inputDenominator),
+    JSBI.multiply(scalarNumerator, inputNumerator),
   );
 
   let numerator = adjustedForDecimalsNumerator;
