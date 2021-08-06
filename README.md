@@ -206,7 +206,7 @@ The `univ3prices.tickPrice()` returns an object that contains three functions de
 
 -   `decimals0` **{number}** The decimals of token 0.
 -   `decimals1` **{number}** The decimals of token 1.
--   `sqrtPrice` **{string}** The Square Root price value of the LP.
+-   `liquidity` **{string}** The liquidity value of the LP.
 -   `tickSpacing` **{string}** The tick spacing value of the LP.
 -   `tickStep` **{number=}** Optionally, set how many tick steps of liquidity range should be calculated (default: 0).
 -   **Returns** **{Array<string>}** A tuple array containing the amount of each token in the defined liquidity range.
