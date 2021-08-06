@@ -35,7 +35,7 @@ const price = univ3prices(
     sqrtPrice,
 ).toSignificant(5);
 
-console.log(prices);
+console.log(price);
 // "1.01"
 ```
 
