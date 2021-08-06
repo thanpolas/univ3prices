@@ -384,7 +384,9 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
--   **v2.0.0**, _XX Aug 2021_
+-   **v2.0.1**, _06 Aug 2021_
+    -   Fixed order of price calculation for `sqrtPrice()`.
+-   **v2.0.0**, _06 Aug 2021_
     -   Implemented the liquidity calculation functions `getAmountsForCurrentLiquidity()` and `getAmountsForLiquidityRange()`.
     -   Implemented Tick Math functions at `tickMath.getSqrtRatioAtTick()` and `tickMath.getTickAtSqrtRatio`.
     -   Added `sqrtPrice` function on the API (same as the default export).
