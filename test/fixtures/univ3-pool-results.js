@@ -12,3 +12,12 @@ fix.dai_weth = {
   sqrtPrice: '1550724133884968571999296281',
   tickSpacing: '60',
 };
+
+// Using USDC/WETH: https://etherscan.io/address/0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8
+fix.usdc_weth = {
+  token0_decimals: 6,
+  token1_decimals: 18,
+  liquidity: '23187408889601892673',
+  sqrtPrice: '1510978141923922864297330642137308',
+  tickSpacing: '60',
+};
