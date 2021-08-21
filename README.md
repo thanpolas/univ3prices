@@ -4,6 +4,9 @@
 
 [![NPM Version][npm-image]][npm-url]
 [![CircleCI][circle-image]][circle-url]
+[![codecov](https://codecov.io/gh/thanpolas/univ3prices/branch/main/graph/badge.svg?token=XKLZG037MA)](https://codecov.io/gh/thanpolas/univ3prices)
+[![Discord](https://img.shields.io/discord/847075821276758096?label=discord&color=CBE9F0)](https://discord.gg/GkyEqzJWEY)
+[![Twitter Follow](https://img.shields.io/twitter/follow/thanpolas.svg?label=thanpolas&style=social)](https://twitter.com/thanpolas)
 
 ## Features
 
@@ -435,3 +438,4 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [tick-math]: #tick-math-functions
 [utilities]: #utility-functions
 [constants]: #constants
+[thanpolas]: https://github.com/thanpolas

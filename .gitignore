@@ -10,3 +10,4 @@ coverage
 db_data
 junit.xml
 .env
+coverage
