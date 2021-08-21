@@ -438,3 +438,4 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [tick-math]: #tick-math-functions
 [utilities]: #utility-functions
 [constants]: #constants
+[thanpolas]: https://github.com/thanpolas
