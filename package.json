@@ -26,12 +26,17 @@
         "release:minor": "release-it minor --ci",
         "release:major": "release-it major --ci",
         "eslint": "eslint src test",
-        "jest": "jest"
+        "jest": "TZ=utc jest --ci --coverage && codecov"
     },
     "jest": {
+        "coverageDirectory": "./coverage/",
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "./src/*.js",
+            "./src/**/*.js"
+        ],
         "coverageReporters": [
-            "html",
-            "text-summary"
+            "json"
         ],
         "roots": [
             "./test/app",
