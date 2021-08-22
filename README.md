@@ -106,8 +106,6 @@ Calculates to fixed decimals. [View the toSignificant() documentation on crypto-
 -   `optOptions` **{Object=}** Calculation and Formatting options from the [crypto-utils][crypto-utils-options] package.
 -   **Returns** `string`, ration with fixed decimals, default 5.
 
-Formatting and Rounding are exactly the same as for [the `toSignificant()` method][tosignificant]
-
 #### toFixed Examples
 
 ```js
@@ -202,7 +200,7 @@ The `univ3prices.tickPrice()` returns an object that contains four functions dep
 
 -   **Returns** **{Array<string>}** A tuple array containing the amount of each token in the defined liquidity range.
 
-ℹ️ :: This function is a wrapper to `getAmountsForLiquidity()`, will automatically calculate the liquidity range expressed as `sqrtRatioAX96` and `sqrtRatioBX96`.
+ℹ️ :: This function is a wrapper to [`getAmountsForLiquidityRange()`][getamountsforliquidityrange], will automatically calculate the liquidity range expressed as `sqrtRatioAX96` and `sqrtRatioBX96`.
 
 ### Examples for univ3prices.getAmountsForCurrentLiquidity
 
@@ -419,15 +417,14 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [jpn]: https://github.com/jnp777/
 [gakonst]: https://github.com/gakonst/
 [dai-weth-pool]: https://etherscan.io/address/0x60594a405d53811d3bc4766596efd80fd545a270
-[tosignificant]: #tosignificantdigits-optformat-optrounding
 [rounding]: #rounding-values
-[tosignificant]: #tosignificantdigits-optformat-optrounding
-[tofixed]: #tofixeddigits-optformat-optrounding
+[tosignificant]: #tosignificantoptoptions
+[tofixed]: #tofixedoptoptions
 [tofraction]: #tofraction
 [get-sqrt-tick-values]: #how-to-get-the-sqrtPrice-and-tick-values-from-uniswap
-[sqrtprice]: #sqrtpricedecimals0-decimals1-sqrtratiox96-optreverse
-[tickprice]: #univ3pricestickpricedecimals0-decimals1-tick-optreverse
-[reserves]: #univ3pricesgetamountsforcurrentliquiditydecimals0-decimals1-liquidity-sqrtprice-tickspacing-opttickstep
+[sqrtprice]: #sqrtpricetokendecimals-sqrtratiox96
+[tickprice]: #univ3pricestickpricetokendecimals-tick
+[reserves]: #univ3pricesgetamountsforcurrentliquiditytokendecimals-liquidity-sqrtprice-tickspacing-optopts
 [tick-math]: #tick-math-functions
 [utilities]: #utility-functions
 [constants]: #constants
@@ -438,3 +435,5 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [crypto-utils-tofixed]: https://github.com/thanpolas/crypto-utils#tofixedfraction-optoptions
 [crypto-utils-tosignificant]: https://github.com/thanpolas/crypto-utils#tosignificantfraction-optoptions
 [crypto-utils-rounding]: https://github.com/thanpolas/crypto-utils#rounding
+[getamountsforliquidityrange]: https://github.com/thanpolas/univ3prices#univ3pricesgetamountsforliquidityrangesqrtprice-sqrtpricea-sqrtpriceb-liquidity
+[toauto]: #toautooptoptions
