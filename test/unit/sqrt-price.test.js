@@ -331,6 +331,48 @@ describe('Uniswap V3 sqrt price', () => {
       });
     });
   });
+
+  describe('toAuto', () => {
+    describe('Price', () => {
+      it('Default toAuto', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
+
+        const price = sqrtPrice([18, 6], sqrtRatioX96).toAuto();
+
+        expect(price).toBeString();
+        expect(price).toEqual('0.9901');
+      });
+      it('Price reversed', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
+
+        const price = sqrtPrice([18, 6], sqrtRatioX96).toAuto({
+          reverse: true,
+        });
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.01000');
+      });
+      it('Price of token0 to token1 for arbitrary', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(20000000e18, 100e18);
+
+        const price = sqrtPrice([18, 18], sqrtRatioX96).toAuto();
+
+        expect(price).toBeString();
+        expect(price).toEqual('0.000005');
+      });
+      it('Price of token1 to token0 for arbitrary', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(20000000e18, 100e18);
+
+        const price = sqrtPrice([18, 18], sqrtRatioX96).toAuto({
+          reverse: true,
+        });
+
+        expect(price).toBeString();
+        expect(price).toEqual('200000.00000');
+      });
+    });
+  });
+
   describe('toFraction()', () => {
     it('Validations and type checks', () => {
       const sqrtRatioX96 = encodeSqrtRatioX96(101e6, 100e18);
