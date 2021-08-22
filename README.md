@@ -374,7 +374,7 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
--   **v3.0.1**, _06 Aug 2021_
+-   **v3.0.0**, _22 Aug 2021_
     -   **Breaking** Changed signature of `getAmountsForCurrentLiquidity()``, it now uses a tuple for the decimals and added formatting options for the result. By default liquidity values will now have 5 decimal places instead of 1
     -   **Breaking** Changed signature of `sqrtPrice()` and `tickPrice()`, they now use a tuple for the decimals and reversing the price has been decoupled to formatting.
     -   **Breaking** Decoupled and replaced fraction calculation and formatting functions to [crypto-utils][crypto-utils] package (`toSignificant()` and `toFixed()` functions).
