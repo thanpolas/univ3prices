@@ -32,116 +32,101 @@ npm install @thanpolas/univ3prices --save
 ```js
 const univ3prices = require('@thanpolas/univ3prices');
 
-const price = univ3prices(
-    USDC.decimals,
-    USDT.decimals,
-    sqrtPrice,
-).toSignificant(5);
+const price = univ3prices([USDC.decimals, USDT.decimals], sqrtPrice).toAuto();
 
 console.log(price);
-// "1.01"
+// "1.00212"
 ```
 
-## sqrtPrice(decimals0, decimals1, sqrtRatioX96, optReverse)
+## sqrtPrice(tokenDecimals, sqrtRatioX96)
 
 > The default function; calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs.
 
--   `decimals0` **{number}** The decimals of token 0.
--   `decimals1` **{number}** The decimals of token 1.
+-   `tokenDecimals` **{Array<number|string>}** An Array tuple with 2 elements, the token0 and token1 decimal place values.
 -   `sqrtPrice` **{string}** The Square Root price value of the LP.
--   `optReverse` **{boolean=}** Optionally, set to true, to get the reversed price (i.e. token1 / token0).
 
 ℹ️ :: This is the default function available by directly requiring the library (`const uniV3Prices = require('univ3prices')`)
 or as a property (`const { sqrtPrice } = require('univ3prices')`).
 
 ℹ️ :: See the [How to Get the sqrtPrice and Tick values][get-sqrt-tick-values] for a guide on how to get those values.
 
-The `sqrtPrice()` returns an object that contains three functions depending on the output type you wish to have:
+The `sqrtPrice()` returns an object that contains four functions depending on the output type you wish to have. The calculation functions are from the [crypto-utils][crypto-utils], find a brief description below.
 
-### toSignificant(digits, optFormat, optRounding)
+### toAuto(optOptions)
 
-> Returns **string**, the last significant decimals as defined by "digits".
+Does automatic decimal calculation and applies appropriate function. If result is above 1 then toFixed() is applied, if under 1 then toSignificant() is applied. [View toAuto() documentation on crypto-utils][crypto-utils-toauto].
 
--   `digits` **{number=}** How many significant digits to return, default `5`.
--   `optFormat` **{Object=}** Formatting instructions for the [toFormat][toformat] library, default is no formatting.
--   `optRounding` **{Rounding=}** The rounding function to use. Rounding is an enumeration available at `univ3Prices.Rounding`, default value is `ROUND_HALF_UP`.
--   **Returns** **{string}** String representation of the result.
+-   `optOptions` **{Object=}** Calculation and Formatting options from the [crypto-utils][crypto-utils-options] package.
+-   **Returns** `{string}` an optimally formatted value.
 
-#### Rounding Values
+```js
+// prepare a sqrtPrice value, by emulating a 10 / 7 division.
+const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
 
--   `univ3prices.constants.Rounding.ROUND_DOWN` Rounds towards zero. I.e. truncate, no rounding.
--   `univ3prices.constants.Rounding.ROUND_HALF_UP`: Rounds towards nearest neighbour. If equidistant, rounds away from zero.
--   `univ3prices.constants.Rounding.ROUND_UP`: Rounds away from zero.
+univ3Price([18, 18], sqrtPrice).toAuto();
+// '0.7'
+
+univ3Price([18, 18], sqrtPrice).toAuto({ reverse: true });
+// '1.42857'
+
+univ3Price([18, 18], sqrtPrice).toSignificant({
+    reverse: true,
+    decimalPlaces: 3,
+});
+// '1.439'
+```
+
+### toSignificant(optOptions)
+
+calculates the value to significant digits. [View the toSignificant() documentation on crypto-utils][crypto-utils-tosignificant]
+
+-   `optOptions` **{Object=}** Calculation and Formatting options from the [crypto-utils][crypto-utils-options] package.
+-   **Returns** `string`, the last significant decimals, default 5.
 
 #### toSignificant Examples - Defaults
 
 ```js
-// prepare a sqrtPrice value, by emulating a 10 / 7 division.
-const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
+// prepare a sqrtPrice value, by emulating a 7 / 10 division.
+const sqrtPrice = encodeSqrtRatioX96(7e18, 10e18);
 
-univ3Price(18, 18, sqrtPrice).toSignificant();
+univ3Price([18, 18], sqrtPrice).toSignificant();
 // '1.4286'
 
-univ3Price(18, 18, sqrtPrice).toSignificant(3);
+univ3Price([18, 18], sqrtPrice).toSignificant({ decimalPlaces: 3 });
 // '1.43'
 
-univ3Price(18, 18, sqrtPrice).toSignificant(2);
+univ3Price([18, 18], sqrtPrice).toSignificant({ decimalPlaces: 2 });
 // '1.4'
 ```
 
-#### toSignificant Examples - Format and Round
+### toFixed(optOptions)
 
-```js
-// prepare a sqrtPrice value, by emulating a 10 / 7 division.
-const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
-// and a sqrtPrice value emulating 20000000 / 1 division.
-const sqrtPrice_20m = encodeSqrtRatioX96(20000000e18, 1e18);
+Calculates to fixed decimals. [View the toSignificant() documentation on crypto-utils][crypto-utils-tofixed]
 
-// Default Formatting
-const formatDef = { groupSeparator: '' };
-// Use `,` as group separator
-const formatComma = { groupSeparator: ',' };
-
-univ3Price(18, 18, sqrtPrice).toSignificant(5, formatDef, ROUND_DOWN);
-// '1.4285'
-univ3Price(18, 18, sqrtPrice).toSignificant(3, formatDef, ROUND_DOWN);
-// '1.42'
-
-//  Formatting
-univ3Price(18, 18, sqrtPrice_20m).toSignificant(5, formatComma);
-// '20,000,000'
-```
-
-### toFixed(digits, optFormat, optRounding)
-
-> Returns **string**, fixed decimals as defined in "digits".
-
--   `digits` **{number=}** How many significant digits to return, default `5`.
--   `optFormat` **{Object=}** Formatting instructions for the [toFormat][toformat] library, default is no formatting.
--   `optRounding` **{Rounding=}** The rounding function to use. Rounding is an enumeration available at `univ3Prices.Rounding`, default value is `ROUND_HALF_UP`.
--   **Returns** **{string}** String representation of the result.
+-   `optOptions` **{Object=}** Calculation and Formatting options from the [crypto-utils][crypto-utils-options] package.
+-   **Returns** `string`, ration with fixed decimals, default 5.
 
 Formatting and Rounding are exactly the same as for [the `toSignificant()` method][tosignificant]
 
 #### toFixed Examples
 
 ```js
-// prepare a sqrtPrice value, by emulating a 10 / 7 division.
-const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
-// and a sqrtPrice value emulating 20000000 / 1 division.
-const sqrtPrice_20m = encodeSqrtRatioX96(10e18, 7e18);
+// prepare a sqrtPrice value, by emulating a 7 / 10 division.
+const sqrtPrice = encodeSqrtRatioX96(7e18, 10e18);
+// and a sqrtPrice value emulating  20000000 / 1  division.
+const sqrtPrice_20m = encodeSqrtRatioX96(20000000e18, 1e18);
 
-univ3Price(18, 18, sqrtPrice).toFixed();
+univ3Price([18, 18], sqrtPrice).toFixed();
 // '1.42857'
 
-univ3Price(18, 18, sqrtPrice).toFixed(3);
+univ3Price([18, 18], sqrtPrice).toFixed({ decimalPlaces: 3 });
 // '1.429'
 
-univ3Price(18, 18, sqrtPrice).toFixed(2);
+univ3Price([18, 18], sqrtPrice).toFixed({ decimalPlaces: 2 });
 // '1.43'
 
 // This time use the 20m ratio
-univ3Price(18, 18, sqrtPrice_20m).toFixed(2);
+univ3Price([18, 18], sqrtPrice_20m).toFixed({ decimalPlaces: 2 });
 // '20000000.00'
 ```
 
@@ -156,7 +141,7 @@ const JSBI = require('jsbi');
 // prepare a sqrtPrice value, by emulating a 10 / 7 division.
 const sqrtPrice = encodeSqrtRatioX96(10e18, 7e18);
 
-const fraction = univ3Price(18, 18, sqrtPrice).toFraction();
+const fraction = univ3Price([18, 18], sqrtPrice).toFraction();
 
 const [numerator, denominator] = fraction;
 
@@ -184,34 +169,37 @@ the `sqrtPrice` or `tick` property from the `Pool` schema.
 
 ---
 
-## univ3prices.tickPrice(decimals0, decimals1, tick, optReverse)
+## univ3prices.tickPrice(tokenDecimals, tick)
 
 > calculates [Uniswap V3][univ3] Liquidity Pool (LP) ratios (prices) for Token Pairs using the current tick value.
 
--   `decimals0` **{number}** The decimals of token 0.
--   `decimals1` **{number}** The decimals of token 1.
+-   `tokenDecimals` **{Array<number|string>}** An Array tuple with 2 elements, the token0 and token1 decimal place values.
 -   `tick` **{string}** The current tick value.
--   `optReverse` **{boolean=}** Optionally, set to true, to get the reversed price (i.e. token1 / token0).
 
 ℹ️ :: See the [How to Get the sqrtPrice and Tick values][get-sqrt-tick-values] for a guide on how to get those values.
 
-The `univ3prices.tickPrice()` returns an object that contains three functions depending on the output type you wish to have, and has the exact same functions as the default function:
+The `univ3prices.tickPrice()` returns an object that contains four functions depending on the output type you wish to have, and has the exact same functions as the default function:
 
+-   [toAuto()][toauto].
 -   [toSignificant()][tosignificant].
 -   [toFixed()][tofixed].
 -   [toFraction()][tofraction].
 
 ---
 
-## univ3prices.getAmountsForCurrentLiquidity(decimals0, decimals1, liquidity, sqrtPrice, tickSpacing, optTickStep)
+## univ3prices.getAmountsForCurrentLiquidity(tokenDecimals, liquidity, sqrtPrice, tickSpacing, optOpts)
 
 > Calculates the reserves for the current sqrt price value.
 
--   `decimals0` **{number}** The decimals of token 0.
--   `decimals1` **{number}** The decimals of token 1.
+-   `tokenDecimals` **{Array<number|string>}** An Array tuple with 2 elements, the token0 and token1 decimal place values.
 -   `liquidity` **{string}** The liquidity value of the LP.
 -   `tickSpacing` **{string}** The tick spacing value of the LP.
--   `tickStep` **{number=}** Optionally, set how many tick steps of liquidity range should be calculated (default: 0).
+-   `optOptions` **{Object=}** A set of optional options:
+
+    -   `tickStep` **{number=}** Optionally, set how many tick steps of liquidity range should be calculated (default: 0).
+    -   `token0Opts` **{Object=}** Calculation and formatting options for the token0 reserves, [see available options on the crypto-utils package.][crypto-utils-options].
+    -   `token1Opts` **{Object=}** Calculation and formatting options for the token1 reserves, [see available options on the crypto-utils package.][crypto-utils-options].
+
 -   **Returns** **{Array<string>}** A tuple array containing the amount of each token in the defined liquidity range.
 
 ℹ️ :: This function is a wrapper to `getAmountsForLiquidity()`, will automatically calculate the liquidity range expressed as `sqrtRatioAX96` and `sqrtRatioBX96`.
@@ -221,20 +209,21 @@ The `univ3prices.tickPrice()` returns an object that contains three functions de
 Standard example:
 
 ```js
-// Get the reserves for the DAI/WETH Liquidity Pool.
-const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+const tokenDecimals = [
     '18', // decimals of DAI
     '18', // decimals of WETH
+];
+// Get the reserves for the DAI/WETH Liquidity Pool.
+const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+    tokenDecimals,
     '2830981547246997099758055', // Current liquidity value of the pool
     '1550724133884968571999296281', // Current sqrt price value of the pool
     '60', // the tickSpacing value from the pool
 );
-
 // The total amount of DAI available in this liquidity range
-expect(token0Reserves).toEqual('116596.9');
+expect(token0Reserves).toEqual('116596.90182');
 // The total amount of WETH available in this liquidity range
-expect(token1Reserves).toEqual('121.4');
-});
+expect(token1Reserves).toEqual('121.40391');
 ```
 
 Widening the liquidity range by having a step of 5:
@@ -242,18 +231,16 @@ Widening the liquidity range by having a step of 5:
 ```js
 // Get the reserves for the DAI/WETH Liquidity Pool.
 const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
-    '18', // decimals of DAI
-    '18', // decimals of WETH
+    tokenDecimals,
     '2830981547246997099758055', // Current liquidity value of the pool
     '1550724133884968571999296281', // Current sqrt price value of the pool
     '60', // the tickSpacing value from the pool
-    5 // Choose 5 steps of tickSpacing (60 * 5) for low and high tick values.
+    {tickStep: 5} // Choose 5 steps of tickSpacing (60 * 5) for low and high tick values.
 );
-
 // The total amount of DAI available in this liquidity range
-expect(token0Reserves).toEqual('116596.9');
+expect(token0Reserves).toEqual('2268131.86622');
 // The total amount of WETH available in this liquidity range
-expect(token1Reserves).toEqual('944.5');
+expect(token1Reserves).toEqual('944.51034');
 });
 ```
 
@@ -340,7 +327,7 @@ The following constants are available in the `univ3prices.constants` path:
 -   `MAX_TICK` :: Maximum tick value.
 -   `MIN_SQRT_RATIO` :: Minimum sqrt price (ratio) value.
 -   `MAX_SQRT_RATIO` :: Maximum sqrt price (ratio) value.
--   `Rounding` :: The [Rounding enumeration as mentioned above][rounding].
+-   `Rounding` :: The [Rounding enumeration from the crypto-utils package][crypto-utils-rounding].
 
 ---
 
@@ -446,3 +433,8 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [constants]: #constants
 [thanpolas]: https://github.com/thanpolas
 [crypto-utils]: https://github.com/thanpolas/crypto-utils
+[crypto-utils-options]: https://github.com/thanpolas/crypto-utils#calculation-and-formatting-options
+[crypto-utils-toauto]: https://github.com/thanpolas/crypto-utils#toautofraction-optoptions
+[crypto-utils-tofixed]: https://github.com/thanpolas/crypto-utils#tofixedfraction-optoptions
+[crypto-utils-tosignificant]: https://github.com/thanpolas/crypto-utils#tosignificantfraction-optoptions
+[crypto-utils-rounding]: https://github.com/thanpolas/crypto-utils#rounding
