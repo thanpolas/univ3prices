@@ -3,12 +3,12 @@
  */
 
 const JSBI = require('jsbi');
+const { toFixed } = require('@thanpolas/crypto-utils');
 
 // const chainContext = require('./chain-context');
 const { RESOLUTION, Q96 } = require('./constants');
 const { getSqrtRatioAtTick, getTickAtSqrtRatio } = require('./tick-math');
 const { tickRange, expDecs, biConv } = require('./utils');
-const { toFixed } = require('./formatting');
 
 const entity = (module.exports = {});
 
@@ -16,34 +16,46 @@ const entity = (module.exports = {});
  * Calculates the reserves of tokens based on the current tick value and formats
  * appropriately given the decimals of each token.
  *
- * @param {string} dec0 Decimals of first token.
- * @param {string} dec1 Decimals of second token.
+ * @param {Array<number|string>} tokenDecimals Array tuple of token decimals.
  * @param {string} liquidityStr The liquidity value.
  * @param {string} sqrtPriceStr The sqrt price value.
  * @param {string} tickSpacing The spacing between the ticks.
- * @param {number=} tickStep How many tick steps wide to capture liquidity.
+ * @param {Object} optOpts Calculation and formatting options.
+ * @param {number=} optOpts.tickStep How many tick steps wide to capture liquidity.
+ * @param {Object=} optOpts.token0Opts Token 0 liquidity crypto-utils formatting options.
+ * @param {Object=} optOpts.token1Opts Token 1 liquidity crypto-utils formatting options.
  * @return {Array<string>} A tuple with the reserves of token0 and token1.
  */
 entity.getAmountsForCurrentLiquidity = (
-  dec0,
-  dec1,
+  tokenDecimals,
   liquidityStr,
   sqrtPriceStr,
   tickSpacing,
-  tickStep = 0,
+  optOpts,
 ) => {
+  const { tickStep, token0Opts, token1Opts } = optOpts;
+
+  const [dec0, dec1] = tokenDecimals;
+
+  // Exponentiate the decimals
   const tok0Dec = expDecs(dec0);
   const tok1Dec = expDecs(dec1);
 
-  const sqrtPrice = JSBI.BigInt(sqrtPriceStr);
-  const liquidity = JSBI.BigInt(liquidityStr);
+  // Convert to bigint
+  const sqrtPrice = biConv(sqrtPriceStr);
+  const liquidity = biConv(liquidityStr);
+
+  // Get tick value from sqrt
   const tick = getTickAtSqrtRatio(sqrtPrice);
 
+  // Get the tick range to calculate liquidity for
   const [tickLow, tickHigh] = tickRange(tick, tickSpacing, tickStep);
 
+  // Get the sqrtRatio for the tick range (low and high tick).
   const sqrtA = getSqrtRatioAtTick(tickLow);
   const sqrtB = getSqrtRatioAtTick(tickHigh);
 
+  // Calculate liquidity for both tokens
   const reserves = entity.getAmountsForLiquidityRange(
     sqrtPrice,
     sqrtA,
@@ -51,12 +63,15 @@ entity.getAmountsForCurrentLiquidity = (
     liquidity,
   );
 
-  const [amount0Raw, amount1Raw] = reserves;
+  const [token0RawLiquidity, token1RawLiquidity] = reserves;
 
-  const fraction0 = [amount0Raw, tok0Dec];
-  const fraction1 = [amount1Raw, tok1Dec];
+  const fraction0 = [token0RawLiquidity, tok0Dec];
+  const fraction1 = [token1RawLiquidity, tok1Dec];
 
-  const reservesFormatted = [toFixed(fraction0, 1), toFixed(fraction1, 1)];
+  const reservesFormatted = [
+    toFixed(fraction0, token0Opts),
+    toFixed(fraction1, token1Opts),
+  ];
 
   return reservesFormatted;
 };
