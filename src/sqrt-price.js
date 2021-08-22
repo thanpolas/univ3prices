@@ -13,18 +13,12 @@ const entity = (module.exports = {});
 /**
  * Calculates the price (ratio) from sqrt price.
  *
- * @param {string} token0Decimals Decimals of token 0.
- * @param {string} token1Decimals Decimals of token 1.
+ * @param {Array<number|string>} tokenDecimals Array tuple of token decimals.
  * @param {string} sqrtRatioX96 The tick value.
- * @param {boolean=} optReverse Set to true to reverse the token pair.
  * @return {Object} The chain context.
  */
-entity.sqrtPrice = (
-  token0Decimals,
-  token1Decimals,
-  sqrtRatioX96,
-  optReverse = false,
-) => {
+entity.sqrtPrice = (tokenDecimals, sqrtRatioX96) => {
+  const [token0Decimals, token1Decimals] = tokenDecimals;
   const scalarNumerator = expDecs(token0Decimals);
   const scalarDenominator = expDecs(token1Decimals);
 
@@ -40,13 +34,8 @@ entity.sqrtPrice = (
     JSBI.multiply(scalarNumerator, inputNumerator),
   );
 
-  let numerator = adjustedForDecimalsNumerator;
-  let denominator = adjustedForDecimalsDenominator;
-
-  if (optReverse) {
-    numerator = adjustedForDecimalsDenominator;
-    denominator = adjustedForDecimalsNumerator;
-  }
+  const numerator = adjustedForDecimalsNumerator;
+  const denominator = adjustedForDecimalsDenominator;
 
   const fraction = [numerator, denominator];
 
