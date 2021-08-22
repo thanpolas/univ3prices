@@ -1,8 +1,10 @@
 /**
- * @fileoverview Functional context for chaining commands.
+ * @fileoverview Functional context for chaining fraction calculating and
+ *    formatting commands.
+ * @see https://github.com/thanpolas/crypto-utils
  */
 
-const { toFixed, toSignificant } = require('./formatting');
+const { toSignificant, toFixed, toAuto } = require('@thanpolas/crypto-utils');
 
 /**
  * Functional context for chaining commands.
@@ -15,6 +17,7 @@ module.exports = function chainContext(fraction) {
   return {
     toFixed: toFixed.bind(null, fraction),
     toSignificant: toSignificant.bind(null, fraction),
+    toAuto: toAuto.bind(null, fraction),
     toFraction: () => fraction,
   };
 };
