@@ -3,6 +3,7 @@
  */
 
 const JSBI = require('jsbi');
+const { Rounding } = require('@thanpolas/crypto-utils');
 
 const consts = (module.exports = {});
 
@@ -47,8 +48,4 @@ consts.MAX_SQRT_RATIO = JSBI.BigInt(
 /**
  * @enum {number} Normalized rounding for this package.
  */
-consts.Rounding = {
-  ROUND_DOWN: 0,
-  ROUND_HALF_UP: 1,
-  ROUND_UP: 2,
-};
+consts.Rounding = Rounding;
