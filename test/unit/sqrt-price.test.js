@@ -370,6 +370,35 @@ describe('Uniswap V3 sqrt price', () => {
         expect(price).toBeString();
         expect(price).toEqual('200000.00000');
       });
+      it('Ratio of 10/7', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = sqrtPrice([18, 18], sqrtRatioX96).toAuto();
+
+        expect(price).toBeString();
+        expect(price).toEqual('0.7');
+      });
+      it('Ratio of 10/7 reverse', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = sqrtPrice([18, 18], sqrtRatioX96).toAuto({
+          reverse: true,
+        });
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.42857');
+      });
+      it('Ratio of 10/7 reverse - 3 decimals', () => {
+        const sqrtRatioX96 = encodeSqrtRatioX96(10e18, 7e18);
+
+        const price = sqrtPrice([18, 18], sqrtRatioX96).toAuto({
+          reverse: true,
+          decimalPlaces: 3,
+        });
+
+        expect(price).toBeString();
+        expect(price).toEqual('1.429');
+      });
     });
   });
 
