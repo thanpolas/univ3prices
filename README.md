@@ -387,6 +387,12 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
+-   **v3.0.1**, _06 Aug 2021_
+    -   **Breaking** Changed signature of `getAmountsForCurrentLiquidity()``, it now uses a tuple for the decimals and added formatting options for the result. By default liquidity values will now have 5 decimal places instead of 1
+    -   **Breaking** Changed signature of `sqrtPrice()` and `tickPrice()`, they now use a tuple for the decimals and reversing the price has been decoupled to formatting.
+    -   **Breaking** Decoupled and replaced fraction calculation and formatting functions to [crypto-utils][crypto-utils] package (`toSignificant()` and `toFixed()` functions).
+    -   Replaced internal fraction and formatting functions with [crypto-utils][crypto-utils] package.
+    -   Fixed bug with `priceRange()` utility that affected the liquidity calculation when the `tickSpacing` argument was used, thank you [@sydneyhenrard](https://github.com/sydneyhenrard).
 -   **v2.0.1**, _06 Aug 2021_
     -   Fixed order of price calculation for `sqrtPrice()`.
 -   **v2.0.0**, _06 Aug 2021_
@@ -439,3 +445,4 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [utilities]: #utility-functions
 [constants]: #constants
 [thanpolas]: https://github.com/thanpolas
+[crypto-utils]: https://github.com/thanpolas/crypto-utils
