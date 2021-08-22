@@ -14,52 +14,48 @@ describe('Uniswap V3 Liquidity', () => {
   describe('getAmountsForCurrentLiquidity()', () => {
     it('Amounts of token0 and token1 should be as expected', () => {
       const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
-        dai_weth.token0_decimals,
-        dai_weth.token1_decimals,
+        [dai_weth.token0_decimals, dai_weth.token1_decimals],
         dai_weth.liquidity,
         dai_weth.sqrtPrice,
         dai_weth.tickSpacing,
       );
 
-      expect(token0Reserves).toEqual('116596.9');
-      expect(token1Reserves).toEqual('121.4');
+      expect(token0Reserves).toEqual('116596.90182');
+      expect(token1Reserves).toEqual('121.40391');
     });
   });
   it('Amounts of token0 and token1 should be as expected with tick step 5', () => {
     const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
-      dai_weth.token0_decimals,
-      dai_weth.token1_decimals,
+      [dai_weth.token0_decimals, dai_weth.token1_decimals],
       dai_weth.liquidity,
       dai_weth.sqrtPrice,
       dai_weth.tickSpacing,
-      5,
+      { tickStep: 5 },
     );
 
-    expect(token0Reserves).toEqual('2268131.9');
-    expect(token1Reserves).toEqual('944.5');
+    expect(token0Reserves).toEqual('2268131.86622');
+    expect(token1Reserves).toEqual('944.51034');
   });
   it('Amounts of token0 and token1 should be as expected for uni/usdc pair', () => {
     const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
-      uni_usdc.token0_decimals,
-      uni_usdc.token1_decimals,
+      [uni_usdc.token0_decimals, uni_usdc.token1_decimals],
       uni_usdc.liquidity,
       uni_usdc.sqrtPrice,
       uni_usdc.tickSpacing,
     );
-    expect(token0Reserves).toEqual('326.9');
-    expect(token1Reserves).toEqual('1009.9');
+    expect(token0Reserves).toEqual('326.91005');
+    expect(token1Reserves).toEqual('1009.85756');
   });
   it('Amounts of token0 and token1 should be as expected for uni/usdc pair with a step of 10', () => {
     const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
-      uni_usdc.token0_decimals,
-      uni_usdc.token1_decimals,
+      [uni_usdc.token0_decimals, uni_usdc.token1_decimals],
       uni_usdc.liquidity,
       uni_usdc.sqrtPrice,
       uni_usdc.tickSpacing,
-      10,
+      { tickStep: 10 },
     );
-    expect(token0Reserves).toEqual('3888.9');
-    expect(token1Reserves).toEqual('103477.8');
+    expect(token0Reserves).toEqual('3888.88517');
+    expect(token1Reserves).toEqual('103477.78895');
   });
 });
 describe('uniswap-v3-periphery spec', () => {
