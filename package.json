@@ -36,6 +36,7 @@
             "./src/**/*.js"
         ],
         "coverageReporters": [
+            "html",
             "json"
         ],
         "roots": [
@@ -50,11 +51,9 @@
         "testTimeout": 10000
     },
     "dependencies": {
-        "big.js": "^6.1.1",
-        "decimal.js": "^10.3.1",
+        "@thanpolas/crypto-utils": "^0.3.1",
         "invariant": "^2.2.4",
-        "jsbi": "^3.1.6",
-        "toformat": "^2.0.0"
+        "jsbi": "^3.1.6"
     },
     "devDependencies": {
         "@types/jest": "^27.0.1",

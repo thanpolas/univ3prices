@@ -2,7 +2,7 @@ const JSBI = require('jsbi');
 
 const univ3Prices = require('../..');
 
-const { encodeSqrtRatioX96, sqrt } = univ3Prices.utils;
+const { encodeSqrtRatioX96, sqrt, tickRange } = univ3Prices.utils;
 const { Q96 } = univ3Prices.constants;
 
 const MaxUint256 = JSBI.BigInt(
@@ -61,6 +61,18 @@ describe('Utils', () => {
       expect(sqrt(MaxUint256)).toEqual(
         JSBI.BigInt('340282366920938463463374607431768211455'),
       );
+    });
+  });
+  describe('tickRange()', () => {
+    it('should return the expected tick range', () => {
+      const [rangeLow, rangeHigh] = tickRange('1001', '60');
+      expect(rangeLow).toEqual(960);
+      expect(rangeHigh).toEqual(1020);
+    });
+    it('should return the expected tick range with a tickstep of 5', () => {
+      const [rangeLow, rangeHigh] = tickRange('1001', '60', 5);
+      expect(rangeLow).toEqual(660);
+      expect(rangeHigh).toEqual(1320);
     });
   });
 });

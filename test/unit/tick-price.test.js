@@ -21,11 +21,9 @@ const { eth_usdt: ethusdtfix, susd_usdc: susdfix } = subfix;
  */
 function runCalc(fix, optReverse = false, optSignigicantDigits) {
   const priceTick = tickPrice(
-    fix.token0.decimals,
-    fix.token1.decimals,
+    [fix.token0.decimals, fix.token1.decimals],
     fix.tick,
-    optReverse,
-  ).toSignificant(optSignigicantDigits);
+  ).toSignificant({ decimalPlaces: optSignigicantDigits, reverse: optReverse });
 
   return priceTick;
 }
@@ -37,7 +35,7 @@ describe('Uniswap V3 Tick Price', () => {
         expect(runCalc(ethusdtfix)).toEqual('0.00048521');
       });
       it('Price of token0 to token1 for ETH reversed', () => {
-        expect(runCalc(ethusdtfix, true)).toEqual('2061');
+        expect(runCalc(ethusdtfix, true)).toEqual('2060.9');
       });
       it('Price of token0 to token1 for Stables', () => {
         expect(runCalc(susdfix)).toEqual('0.99114');
