@@ -91,9 +91,9 @@ describe('API Surface Tests', () => {
 
   describe('Check Values', () => {
     it('Rounding Enum has expected values', () => {
-      expect(univ3Prices.constants.Rounding.ROUND_DOWN).toEqual(0);
-      expect(univ3Prices.constants.Rounding.ROUND_HALF_UP).toEqual(1);
-      expect(univ3Prices.constants.Rounding.ROUND_UP).toEqual(2);
+      expect(univ3Prices.constants.Rounding.ROUND_DOWN).toEqual(1);
+      expect(univ3Prices.constants.Rounding.ROUND_HALF_UP).toEqual(4);
+      expect(univ3Prices.constants.Rounding.ROUND_UP).toEqual(0);
     });
   });
 });
