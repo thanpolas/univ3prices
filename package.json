@@ -36,6 +36,7 @@
             "./src/**/*.js"
         ],
         "coverageReporters": [
+            "html",
             "json"
         ],
         "roots": [
@@ -50,7 +51,7 @@
         "testTimeout": 10000
     },
     "dependencies": {
-        "@thanpolas/crypto-utils": "^0.3.0",
+        "@thanpolas/crypto-utils": "^0.3.1",
         "big.js": "^6.1.1",
         "decimal.js": "^10.3.1",
         "invariant": "^2.2.4",
