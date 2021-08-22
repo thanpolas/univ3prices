@@ -31,7 +31,7 @@ entity.getAmountsForCurrentLiquidity = (
   liquidityStr,
   sqrtPriceStr,
   tickSpacing,
-  optOpts,
+  optOpts = {},
 ) => {
   const { tickStep, token0Opts, token1Opts } = optOpts;
 
