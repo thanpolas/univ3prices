@@ -12,7 +12,7 @@ const { getAmountsForCurrentLiquidity, getAmountsForLiquidityRange } =
 
 describe('Uniswap V3 Liquidity', () => {
   describe('getAmountsForCurrentLiquidity()', () => {
-    it('Amounts of token0 and token1 should be as expected', () => {
+    it('Reserves of DAI/WETH should be as expected', () => {
       const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
         [dai_weth.token0_decimals, dai_weth.token1_decimals],
         dai_weth.liquidity,
@@ -24,7 +24,7 @@ describe('Uniswap V3 Liquidity', () => {
       expect(token1Reserves).toEqual('121.40391');
     });
   });
-  it('Amounts of token0 and token1 should be as expected with tick step 5', () => {
+  it('Reserves of DAI/WETH should be as expected with tick step 5', () => {
     const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
       [dai_weth.token0_decimals, dai_weth.token1_decimals],
       dai_weth.liquidity,
@@ -35,6 +35,30 @@ describe('Uniswap V3 Liquidity', () => {
 
     expect(token0Reserves).toEqual('2268131.86622');
     expect(token1Reserves).toEqual('944.51034');
+  });
+  it('Reserves of DAI/WETH with formatting for token0', () => {
+    const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+      [dai_weth.token0_decimals, dai_weth.token1_decimals],
+      dai_weth.liquidity,
+      dai_weth.sqrtPrice,
+      dai_weth.tickSpacing,
+      { tickStep: 5, token0Opts: { decimalPlaces: 2 } },
+    );
+
+    expect(token0Reserves).toEqual('2268131.87');
+    expect(token1Reserves).toEqual('944.51034');
+  });
+  it('Reserves of DAI/WETH with formatting for token1', () => {
+    const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+      [dai_weth.token0_decimals, dai_weth.token1_decimals],
+      dai_weth.liquidity,
+      dai_weth.sqrtPrice,
+      dai_weth.tickSpacing,
+      { tickStep: 5, token1Opts: { decimalPlaces: 2 } },
+    );
+
+    expect(token0Reserves).toEqual('2268131.86622');
+    expect(token1Reserves).toEqual('944.51');
   });
   it('Amounts of token0 and token1 should be as expected for uni/usdc pair', () => {
     const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
