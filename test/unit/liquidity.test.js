@@ -3,7 +3,7 @@
  */
 
 const univ3Price = require('../..');
-const { dai_weth } = require('../fixtures/univ3-pool-results');
+const { dai_weth, uni_usdc } = require('../fixtures/univ3-pool-results');
 
 const { encodeSqrtRatioX96: encodePriceSqrt } = univ3Price.utils;
 
@@ -35,8 +35,31 @@ describe('Uniswap V3 Liquidity', () => {
       5,
     );
 
-    expect(token0Reserves).toEqual('116596.9');
+    expect(token0Reserves).toEqual('2268131.9');
     expect(token1Reserves).toEqual('944.5');
+  });
+  it('Amounts of token0 and token1 should be as expected for uni/usdc pair', () => {
+    const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+      uni_usdc.token0_decimals,
+      uni_usdc.token1_decimals,
+      uni_usdc.liquidity,
+      uni_usdc.sqrtPrice,
+      uni_usdc.tickSpacing,
+    );
+    expect(token0Reserves).toEqual('326.9');
+    expect(token1Reserves).toEqual('1009.9');
+  });
+  it('Amounts of token0 and token1 should be as expected for uni/usdc pair with a step of 10', () => {
+    const [token0Reserves, token1Reserves] = getAmountsForCurrentLiquidity(
+      uni_usdc.token0_decimals,
+      uni_usdc.token1_decimals,
+      uni_usdc.liquidity,
+      uni_usdc.sqrtPrice,
+      uni_usdc.tickSpacing,
+      10,
+    );
+    expect(token0Reserves).toEqual('3888.9');
+    expect(token1Reserves).toEqual('103477.8');
   });
 });
 describe('uniswap-v3-periphery spec', () => {

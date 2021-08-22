@@ -21,3 +21,12 @@ fix.usdc_weth = {
   sqrtPrice: '1510978141923922864297330642137308',
   tickSpacing: '60',
 };
+
+// Using UNI/USDC: https://etherscan.io/address/0xd0fc8ba7e267f2bc56044a7715a489d851dc6d78#readContract
+fix.uni_usdc = {
+  token0_decimals: 18,
+  token1_decimals: 6,
+  liquidity: '647424456336700945',
+  sqrtPrice: '424427182250808799309705',
+  tickSpacing: '60',
+};
