@@ -52,11 +52,8 @@
     },
     "dependencies": {
         "@thanpolas/crypto-utils": "^0.3.1",
-        "big.js": "^6.1.1",
-        "decimal.js": "^10.3.1",
         "invariant": "^2.2.4",
-        "jsbi": "^3.1.6",
-        "toformat": "^2.0.0"
+        "jsbi": "^3.1.6"
     },
     "devDependencies": {
         "@types/jest": "^27.0.1",
