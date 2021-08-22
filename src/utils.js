@@ -66,7 +66,7 @@ utils.tickRange = (tickStr, tickSpacingStr, tickStep = 0) => {
 
   const tickLow =
     Math.floor(tick / tickSpacing) * tickSpacing - tickSpacingStepped;
-  const tickHigh = tickLow + tickSpacing + tickSpacingStepped;
+  const tickHigh = tickLow + tickSpacing + tickSpacingStepped * 2;
 
   return [tickLow, tickHigh];
 };
