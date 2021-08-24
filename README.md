@@ -14,8 +14,8 @@
 
 > Check out the other Uniswap and crypto libraries, that depend on this library and this library depends on:
 >
-> ☎️ ["@thanpolas/uniswap-chain-queries" for fetching on-chain data for ERC20 tokens, Uniswap V2 (and clones) and Uniswap V3][uni-queries].
-> <br />🔧 ["@thanpolas/crypto-utils" for calculating and formatting tokens and fractions][crypto-utils].
+> ☎️ [@thanpolas/uniswap-chain-queries][uni-queries] for fetching on-chain data for ERC20 tokens, Uniswap V2 (and clones) and Uniswap V3.
+> <br />🔧 [@thanpolas/crypto-utils][crypto-utils] for calculating and formatting tokens and fractions.
 
 ## <br />
 
