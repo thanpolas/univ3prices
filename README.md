@@ -8,6 +8,19 @@
 [![Discord](https://img.shields.io/discord/847075821276758096?label=discord&color=CBE9F0)](https://discord.gg/GkyEqzJWEY)
 [![Twitter Follow](https://img.shields.io/twitter/follow/thanpolas.svg?label=thanpolas&style=social)](https://twitter.com/thanpolas)
 
+## <br />
+
+<br />
+
+> Check out the other Uniswap and crypto libraries, that depend on this library:
+>
+> 💰 ["@thanpolas/univ3prices" for calculating Uniswap V3 Prices][univ3prices].
+> <br />🔧 ["@thanpolas/crypto-utils" for calculating and formatting tokens and fractions][crypto-utils].
+
+## <br />
+
+<br />
+
 ## Features
 
 This library will allow you to:
@@ -437,3 +450,6 @@ Copyright © [Thanos Polychronakis][thanpolas] and Authors, [Licensed under ISC]
 [crypto-utils-rounding]: https://github.com/thanpolas/crypto-utils#rounding
 [getamountsforliquidityrange]: https://github.com/thanpolas/univ3prices#univ3pricesgetamountsforliquidityrangesqrtprice-sqrtpricea-sqrtpriceb-liquidity
 [toauto]: #toautooptoptions
+[univ3prices]: https://github.com/thanpolas/univ3prices
+[crypto-utils]: https://github.com/thanpolas/crypto-utils
+[uni-queries]: https://github.com/thanpolas/uniswap-chain-queries
