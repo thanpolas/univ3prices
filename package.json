@@ -1,6 +1,6 @@
 {
     "name": "@thanpolas/univ3prices",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "main": "./src/",
     "description": "Library to calculate Uniswap V3 ratios (prices) from token pairs",
     "homepage": "https://github.com/thanpolas/univ3prices",
