@@ -53,7 +53,7 @@
     "dependencies": {
         "@thanpolas/crypto-utils": "^0.3.1",
         "invariant": "^2.2.4",
-        "jsbi": "^3.2.1"
+        "jsbi": "^3.2.2"
     },
     "devDependencies": {
         "@types/jest": "^27.0.1",
