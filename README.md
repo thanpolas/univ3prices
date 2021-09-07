@@ -385,6 +385,8 @@ When a new node version should be supported, updated the following:
 
 ## Release History
 
+-   **v3.0.2**, _07 Sep 2021_
+    -   JSBI 3.2.1 [also had an issue when used on the browser environment](https://github.com/GoogleChromeLabs/jsbi/issues/70) so had to upgrade to `^3.2.2` to ensure compatibility.
 -   **v3.0.1**, _06 Sep 2021_
     -   Updated all dependencies to latest and especially jsbi to `^3.2.1` so users won't suffer from the broken [3.2.0 release](https://github.com/GoogleChromeLabs/jsbi/issues/68).
 -   **v3.0.0**, _22 Aug 2021_
